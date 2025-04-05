@@ -1,0 +1,39 @@
+{% load wagtailcore_tags %}
+
+<div class="right-content">
+    <div class="search-box">
+        <h4 class="title">Search</h4>
+        <form action="{% url 'blog:search' %}" method="get">
+            <input type="text" name="query" placeholder="Search..." value="{{ search_query }}">
+            <button type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
+        </form>
+    </div>
+    
+    <div class="category-box">
+        <h4 class="title">Categories</h4>
+        <ul>
+            {% for category in categories %}
+            <li>
+                <a href="{% url 'blog:category' category.slug %}">
+                    {{ category.name }}
+                    <span>({{ category.posts.count }})</span>
+                </a>
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+    
+    <div class="recent-box">
+        <h4 class="title">Recent Posts</h4>
+        <ul>
+            {% for recent_post in recent_posts %}
+            <li>
+                <a href="{% pageurl recent_post %}">
+                    {{ recent_post.title }}
+                    <span>{{ recent_post.date|date:"F d, Y" }}</span>
+                </a>
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+</div>

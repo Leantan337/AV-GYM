@@ -1,0 +1,101 @@
+{% extends "base.html" %}
+{% load wagtailcore_tags wagtailimages_tags %}
+
+{% block content %}
+<!-- Banner Section -->
+<div class="banner-section">
+    <div class="container">
+        <div class="banner-content">
+            <h1>{{ page.title }}</h1>
+            <ul>
+                <li><a href="{% url 'home' %}">Home</a></li>
+                <li><i class="fa-solid fa-angle-right"></i></li>
+                <li><a href="{% pageurl page.get_parent %}">Blog</a></li>
+                <li><i class="fa-solid fa-angle-right"></i></li>
+                <li>{{ page.title }}</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<!-- Blog Details Section -->
+<div class="blog-details-section">
+    <div class="container">
+        <div class="row">
+            <!-- Blog Content -->
+            <div class="col-lg-8">
+                <div class="blog-details-content">
+                    <!-- Featured Image -->
+                    {% if page.featured_image %}
+                        {% image page.featured_image fill-800x600 as blog_image %}
+                        <div class="img-box">
+                            <img src="{{ blog_image.url }}" alt="{{ blog_image.alt }}">
+                            <p class="date">{{ page.date|date:"F d, Y" }}</p>
+                        </div>
+                    {% endif %}
+
+                    <!-- Meta Information -->
+                    <div class="box-item">
+                        <p><i class="fa-solid fa-user"></i>By {{ page.owner.get_full_name|default:page.owner.username }}</p>
+                        {% if page.categories %}
+                            <p><i class="fa-solid fa-folder-open"></i>{{ page.categories.name }}</p>
+                        {% endif %}
+                    </div>
+
+                    <!-- Blog Content -->
+                    <div class="blog-content">
+                        {{ page.body|richtext }}
+                    </div>
+
+                    <!-- Tags and Share -->
+                    <div class="blog-footer">
+                        {% if page.categories %}
+                        <div class="tags">
+                            <span>Category:</span>
+                            <a href="{% url 'blog:category' page.categories.slug %}">{{ page.categories.name }}</a>
+                        </div>
+                        {% endif %}
+                        
+                        <div class="share">
+                            <span>Share:</span>
+                            <a href="https://facebook.com/sharer/sharer.php?u={{ request.build_absolute_uri }}" target="_blank"><i class="fa-brands fa-facebook-f"></i></a>
+                            <a href="https://twitter.com/intent/tweet?url={{ request.build_absolute_uri }}&text={{ page.title }}" target="_blank"><i class="fa-brands fa-twitter"></i></a>
+                            <a href="https://www.linkedin.com/shareArticle?mini=true&url={{ request.build_absolute_uri }}&title={{ page.title }}" target="_blank"><i class="fa-brands fa-linkedin-in"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Related Posts -->
+                {% with page.get_siblings as related_posts %}
+                {% if related_posts %}
+                <div class="related-posts">
+                    <h3>Related Posts</h3>
+                    <div class="row">
+                        {% for post in related_posts|slice:":3" %}
+                        <div class="col-md-4">
+                            <div class="post-card">
+                                {% if post.specific.featured_image %}
+                                    {% image post.specific.featured_image fill-400x300 as thumb_image %}
+                                    <img src="{{ thumb_image.url }}" alt="{{ thumb_image.alt }}">
+                                {% endif %}
+                                <div class="content">
+                                    <h4><a href="{% pageurl post %}">{{ post.title }}</a></h4>
+                                    <p class="date">{{ post.specific.date|date:"F d, Y" }}</p>
+                                </div>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+                {% endif %}
+                {% endwith %}
+            </div>
+            
+            <!-- Sidebar -->
+            <div class="col-lg-4">
+                {% include "blog/components/sidebar.html" %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,28 @@
+{% load wagtailcore_tags wagtailimages_tags %}
+
+<div class="left-content">
+    <div class="img-box">
+        <a href="{% pageurl post %}">
+            {% image post.featured_image fill-800x600 as blog_image %}
+            {% if blog_image %}
+                <img src="{{ blog_image.url }}" alt="{{ blog_image.alt }}">
+            {% else %}
+                <img src="/static/images/default-blog.jpg" alt="Default blog image">
+            {% endif %}
+        </a>
+        <p class="date">{{ post.date|date:"F d, Y" }}</p>
+    </div>
+    <div class="box-item">
+        <p><i class="fa-solid fa-user"></i>By {{ post.owner.get_full_name|default:post.owner.username }}</p>
+        {% if post.categories %}
+            <p><i class="fa-solid fa-folder-open"></i>{{ post.categories.name }}</p>
+        {% endif %}
+    </div>
+    <h3 class="title">
+        <a href="{% pageurl post %}">{{ post.title }}</a>
+    </h3>
+    <p>{{ post.intro }}</p>
+    <div class="button">
+        <a href="{% pageurl post %}" class="btn">Read More<i class="fa-solid fa-angle-right"></i></a>
+    </div>
+</div>

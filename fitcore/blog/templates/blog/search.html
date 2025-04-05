@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+{% load wagtailcore_tags %}
+
+{% block content %}
+<!-- Banner Section -->
+<div class="banner-section">
+    <div class="container">
+        <div class="banner-content">
+            <h1>Search Results</h1>
+            <ul>
+                <li><a href="{% url 'home' %}">Home</a></li>
+                <li><i class="fa-solid fa-angle-right"></i></li>
+                <li>Search</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<!-- Search Results Section -->
+<div class="blog-section">
+    <div class="container">
+        <div class="row">
+            <!-- Search Results -->
+            <div class="col-lg-8">
+                <h2>Search Results for "{{ search_query }}"</h2>
+                
+                {% if blog_entries %}
+                    {% for post in blog_entries %}
+                        {% include "blog/components/post_card.html" with post=post %}
+                    {% endfor %}
+                    
+                    {% include "blog/components/pagination.html" %}
+                {% else %}
+                    <p>No results found for "{{ search_query }}".</p>
+                {% endif %}
+            </div>
+            
+            <!-- Sidebar -->
+            <div class="col-lg-4">
+                {% include "blog/components/sidebar.html" %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
