@@ -1754,6 +1754,100 @@ p{
 }
 
 /*=================
+ Location Map Section
+===================*/
+
+.location-map-section {
+	padding: 100px 0;
+	background-color: #f9f9f9;
+}
+
+.location-map-section .map-container {
+	position: relative;
+	margin-top: 50px;
+	border-radius: 10px;
+	overflow: hidden;
+	box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.location-map-section .map-wrapper {
+	position: relative;
+	height: 450px;
+	width: 100%;
+}
+
+.location-map-section .map-wrapper iframe {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	border: none;
+}
+
+.location-map-section .location-info {
+	position: absolute;
+	top: 20px;
+	right: 20px;
+	background-color: white;
+	padding: 20px;
+	border-radius: 8px;
+	max-width: 320px;
+	box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.location-map-section .info-box {
+	display: flex;
+	align-items: flex-start;
+	margin-bottom: 20px;
+}
+
+.location-map-section .info-box:last-child {
+	margin-bottom: 0;
+}
+
+.location-map-section .info-box .icon {
+	min-width: 40px;
+	height: 40px;
+	background-color: var(--main-color);
+	border-radius: 50%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin-right: 15px;
+}
+
+.location-map-section .info-box .icon i {
+	color: white;
+	font-size: 16px;
+}
+
+.location-map-section .info-box .content h4 {
+	font-size: 18px;
+	font-weight: 600;
+	margin-bottom: 5px;
+	color: var(--title-color);
+}
+
+.location-map-section .info-box .content p {
+	font-size: 14px;
+	line-height: 1.6;
+	color: var(--paragraph-color);
+	margin-bottom: 0;
+}
+
+/* Media queries for responsive design */
+@media (max-width: 767px) {
+	.location-map-section .location-info {
+		position: relative;
+		top: auto;
+		right: auto;
+		max-width: 100%;
+		margin-top: 20px;
+	}
+}
+
+/*=================
  Footer Section
 ===================*/
 

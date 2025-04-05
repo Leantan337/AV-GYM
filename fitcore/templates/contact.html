@@ -227,10 +227,11 @@
 						<h2 class="title">Have Any Other Question?</h2>
 						<p>Feel free to reach out! Our team is here to help with any inquiries you may have. We're happy to assist!</p>
 						<form class="contact-form" method="post" action="{% url 'cms:contact_handler' %}">
-							<input type="text" name="username" placeholder="Your Name">
-							<input type="email" name="usermail" placeholder="Your Email">
+							{% csrf_token %}
+							<input type="text" name="username" placeholder="Your Name" required>
+							<input type="email" name="usermail" placeholder="Your Email" required>
 							<input type="tel" name="userphone" placeholder="Phone Number">
-							<textarea id="usermessage" name="usermessage" placeholder="Enter your messages"></textarea>
+							<textarea id="usermessage" name="usermessage" placeholder="Enter your messages" required></textarea>
 							<button type="submit">Submit Questions<i class="fa-solid fa-arrow-right"></i></button>
 						</form>
 					</div>
@@ -276,9 +277,10 @@
 				<div class="letter">
 					<h3>Newsletter</h3>
 					<p>Subscribe today and unlock 20% off your first class package.</p>
-					<form action="#" method="post">
+					<form action="{% url 'cms:newsletter_subscribe' %}" method="post">
+						{% csrf_token %}
 						<div class="mail">
-							<input type="email" placeholder="Enter your Email">
+							<input type="email" name="email" placeholder="Enter your Email" required>
 							<button type="submit"><i class="fa-solid fa-paper-plane"></i></button>
 						</div>
 					</form>
@@ -294,7 +296,7 @@
 
 	<div class="search-window">
 		<button class="search-close"><i class="fa-solid fa-xmark"></i></button>
-		<form method="post" action="#">
+		<form method="get" action="{% url 'cms:search' %}">
 			<div class="form-group">
 				<input type="search" name="search-field" value="" placeholder="Search Here" required="">
 				<button type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>

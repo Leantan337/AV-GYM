@@ -43,10 +43,17 @@ def category_view(request, category_slug):
 def blog_detail(request, post_slug):
     post = get_object_or_404(BlogPage, slug=post_slug)
     recent_posts = BlogPage.objects.live().exclude(id=post.id).order_by('-date')[:5]
-    categories = BlogCategory.objects.all()
+    all_categories = BlogCategory.objects.all()
+    post_categories = post.categories.all()
     
-    return render(request, 'blog-details.html', {
-        'post': post,
+    # Get the template from the model's method
+    template = post.get_template(request)
+    
+    return render(request, template, {
+        'page': post,  # Use 'page' to be consistent with Wagtail convention
+        'post': post,  # Keep 'post' for backward compatibility
         'recent_posts': recent_posts,
-        'categories': categories,
+        'categories': all_categories,  # For backward compatibility
+        'all_categories': all_categories,
+        'post_categories': post_categories,
     })

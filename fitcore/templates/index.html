@@ -1008,6 +1008,51 @@
 
 	<!-- End Blog Section -->
 
+	<!-- Start Location Map Section -->
+	<section class="location-map-section">
+		<div class="container">
+			<div class="section-title">
+				<h5><span></span>Find Us</h5>
+				<h2 class="heading">Visit Our Gym</h2>
+				<p>Located in the heart of San Francisco, easily accessible by public transport and with ample parking</p>
+			</div>
+			<div class="map-container">
+				<div class="map-wrapper">
+					<iframe 
+						src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3153.1481850262097!2d-122.40304533468186!3d37.78132997975882!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80858062c2af7ac7%3A0x76cf7c45e21a5add!2s293%20Harrison%20St%2C%20San%20Francisco%2C%20CA%2094103%2C%20USA!5e0!3m2!1sen!2sus!4v1649017619082!5m2!1sen!2sus" 
+						width="100%" 
+						height="450" 
+						style="border:0;" 
+						allowfullscreen="" 
+						loading="lazy" 
+						referrerpolicy="no-referrer-when-downgrade">
+					</iframe>
+				</div>
+				<div class="location-info">
+					<div class="info-box">
+						<div class="icon">
+							<i class="fa-solid fa-location-dot"></i>
+						</div>
+						<div class="content">
+							<h4>Our Location</h4>
+							<p>293 Harrison St, San Francisco, CA 94103, United States</p>
+						</div>
+					</div>
+					<div class="info-box">
+						<div class="icon">
+							<i class="fa-solid fa-clock"></i>
+						</div>
+						<div class="content">
+							<h4>Opening Hours</h4>
+							<p>Monday - Friday: 6:00 AM - 10:00 PM<br>Saturday - Sunday: 8:00 AM - 8:00 PM</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- End Location Map Section -->
+
 	<!-- Start Footer Section -->
 
 	<footer class="footer-section">
@@ -1035,9 +1080,10 @@
 				<div class="letter">
 					<h3>Newsletter</h3>
 					<p>Subscribe today and unlock 20% off your first class package.</p>
-					<form action="#" method="post">
+					<form action="{% url 'cms:newsletter_subscribe' %}" method="post">
+						{% csrf_token %}
 						<div class="mail">
-							<input type="email" placeholder="Enter your Email">
+							<input type="email" name="email" placeholder="Enter your Email" required>
 							<button type="submit"><i class="fa-solid fa-paper-plane"></i></button>
 						</div>
 					</form>
@@ -1053,7 +1099,7 @@
 
 	<div class="search-window">
 		<button class="search-close"><i class="fa-solid fa-xmark"></i></button>
-		<form method="post" action="#">
+		<form method="get" action="{% url 'cms:search' %}">
 			<div class="form-group">
 				<input type="search" name="search-field" value="" placeholder="Search Here" required="">
 				<button type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>

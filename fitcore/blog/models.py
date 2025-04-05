@@ -64,10 +64,17 @@ class BlogPage(Page):
         context = super().get_context(request)
         context['recent_posts'] = BlogPage.objects.live().order_by('-date')[:5]
         context['categories'] = BlogCategory.objects.all()
+        context['all_categories'] = BlogCategory.objects.all()
+        # Add selected categories for this post
+        context['post_categories'] = self.categories.all()
         return context
 
     def get_template(self, request, *args, **kwargs):
-        return 'blog.html'  # Use the existing blog template
+        # Use different templates for previews vs. published pages
+        # Safely check if request has is_preview attribute
+        if hasattr(request, 'is_preview') and request.is_preview:
+            return 'blog_detail.html'
+        return 'blog-details.html'
 
     class Meta:
         ordering = ['-date']
