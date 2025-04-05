@@ -30,3 +30,4 @@ urllib3==2.3.0
 wagtail==5.2
 webencodings==0.5.1
 Willow==1.6.3
+gunicorn==23.0.0
