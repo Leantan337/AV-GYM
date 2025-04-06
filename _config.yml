@@ -1,0 +1,22 @@
+title: AV-GYM
+description: >-
+  AV-GYM website and blog system
+
+# Build settings
+markdown: kramdown
+theme: jekyll-theme-primer
+
+# Exclude from processing
+exclude:
+  - venv
+  - Gemfile
+  - Gemfile.lock
+  - node_modules
+  - vendor
+  - .git
+  - .github
+  - README.md
+  - LICENSE
+  - *.pyc
+  - __pycache__
+  - .pytest_cache

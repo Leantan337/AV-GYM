@@ -1,0 +1,23 @@
+# Python virtual environment
+venv/
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Jekyll site
+_site/
+.sass-cache/
+.jekyll-cache/
+.jekyll-metadata
+
+# IDE settings
+.vscode/
+.idea/
+
+# Environment variables
+.env
+*.env
+
+# System files
+.DS_Store
+Thumbs.db
