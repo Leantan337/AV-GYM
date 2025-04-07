@@ -6,7 +6,7 @@ set -o errexit
 pip install -r requirements.txt
 
 # Convert static asset files
-python fitcore/manage.py collectstatic --no-input
+python fitcore/manage.py collectstatic --no-input --settings=fitcore.settings_production
 
 # Apply any outstanding database migrations
-python fitcore/manage.py migrate
+python fitcore/manage.py migrate --settings=fitcore.settings_production
