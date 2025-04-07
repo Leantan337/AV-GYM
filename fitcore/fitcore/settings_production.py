@@ -2,6 +2,7 @@
 Production settings for fitcore project.
 """
 
+import dj_database_url
 from .settings import *  # noqa
 
 # Add production-specific apps
@@ -21,7 +22,13 @@ ALLOWED_HOSTS = os.environ.get('DJANGO_ALLOWED_HOSTS', '').split(',')
 # Database
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
 
-if os.environ.get('DB_ENGINE') == 'django.db.backends.sqlite3':
+# Check for DATABASE_URL first (used by Render and other cloud platforms)
+if os.environ.get('DATABASE_URL'):
+    DATABASES = {
+        'default': dj_database_url.config(conn_max_age=600, ssl_require=True)
+    }
+# Fallback to explicit configuration
+elif os.environ.get('DB_ENGINE') == 'django.db.backends.sqlite3':
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.sqlite3',
