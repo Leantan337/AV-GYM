@@ -22,31 +22,14 @@ ALLOWED_HOSTS = os.environ.get('DJANGO_ALLOWED_HOSTS', '').split(',')
 # Database
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
 
-# Check for DATABASE_URL first (used by Render and other cloud platforms)
-if os.environ.get('DATABASE_URL'):
-    DATABASES = {
-        'default': dj_database_url.config(conn_max_age=600, ssl_require=True)
-    }
-# Fallback to explicit configuration
-elif os.environ.get('DB_ENGINE') == 'django.db.backends.sqlite3':
-    DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.sqlite3',
-            'NAME': BASE_DIR / os.environ.get('DB_NAME', 'db.sqlite3'),
-        }
-    }
-else:
-    DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.postgresql',
-            'NAME': os.environ.get('DB_NAME'),
-            'USER': os.environ.get('DB_USER'),
-            'PASSWORD': os.environ.get('DB_PASSWORD'),
-            'HOST': os.environ.get('DB_HOST', 'localhost'),
-            'PORT': os.environ.get('DB_PORT', '5432'),
-            'CONN_MAX_AGE': 600,
-        }
-    }
+# Always use dj_database_url for the default database and fall back to SQLite if needed
+DATABASES = {
+    'default': dj_database_url.config(
+        default='sqlite:///' + str(BASE_DIR / 'db.sqlite3'),
+        conn_max_age=600,
+        ssl_require=True
+    )
+}
 
 # Cache
 if os.environ.get('USE_REDIS', 'False') == 'True':
