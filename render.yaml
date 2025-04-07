@@ -11,6 +11,10 @@ services:
     runtime: python
     buildCommand: "./build.sh"
     startCommand: "cd fitcore && gunicorn fitcore.wsgi:application"
+    disk:
+      name: media
+      mountPath: /opt/render/project/src/media
+      sizeGB: 1
     envVars:
       - key: DATABASE_URL
         fromDatabase:

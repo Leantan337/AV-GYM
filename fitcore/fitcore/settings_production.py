@@ -85,7 +85,8 @@ if os.environ.get('USE_S3', 'False') == 'True':
         'CacheControl': 'max-age=86400',
     }
 else:
-    MEDIA_ROOT = BASE_DIR / 'media'
+    # Use Render persistent disk for media files
+    MEDIA_ROOT = '/opt/render/project/src/media'
     MEDIA_URL = '/media/'
 
 # Security Settings
