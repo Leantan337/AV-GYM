@@ -23,13 +23,23 @@ ALLOWED_HOSTS = os.environ.get('DJANGO_ALLOWED_HOSTS', '').split(',')
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
 
 # Always use dj_database_url for the default database and fall back to SQLite if needed
-DATABASES = {
-    'default': dj_database_url.config(
-        default='sqlite:///' + str(BASE_DIR / 'db.sqlite3'),
-        conn_max_age=600,
-        ssl_require=True
-    )
-}
+default_db_url = os.environ.get('DATABASE_URL', 'sqlite:///' + str(BASE_DIR / 'db.sqlite3'))
+
+if default_db_url.startswith('sqlite:///'):
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': BASE_DIR / 'db.sqlite3',
+        }
+    }
+else:
+    DATABASES = {
+        'default': dj_database_url.config(
+            default=default_db_url,
+            conn_max_age=600,
+            ssl_require=True
+        )
+    }
 
 # Cache
 if os.environ.get('USE_REDIS', 'False') == 'True':
