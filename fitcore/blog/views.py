@@ -50,7 +50,7 @@ def blog_detail(request, post_slug):
     template = post.get_template(request)
     
     return render(request, template, {
-        'page': post,  # Use 'page' to be consistent with Wagtail convention
+        'page': post,  # Use 'page' for Wagtail convention
         'post': post,  # Keep 'post' for backward compatibility
         'recent_posts': recent_posts,
         'categories': all_categories,  # For backward compatibility

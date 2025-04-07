@@ -89,6 +89,9 @@ else:
     MEDIA_ROOT = '/opt/render/project/src/media'
     MEDIA_URL = '/media/'
 
+    # Make sure the MEDIA_ROOT directory exists
+    os.makedirs(MEDIA_ROOT, exist_ok=True)
+
 # Security Settings
 if os.environ.get('ENABLE_SECURITY', 'False') == 'True':
     SECURE_SSL_REDIRECT = True

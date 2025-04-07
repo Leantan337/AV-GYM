@@ -86,7 +86,7 @@
                         <div class="img-box">
                             {% if page.featured_image %}
                             {% image page.featured_image fill-800x600 as blog_image %}
-                            <img src="{{ blog_image.url }}" alt="{{ blog_image.alt }}">
+                            <img src="{{ blog_image.file.url }}" alt="{{ blog_image.alt }}">
                             {% else %}
                             <img src="{% static 'cms/assets/images/blog-placeholder.jpg' %}" alt="Blog Image Placeholder">
                             {% endif %}
