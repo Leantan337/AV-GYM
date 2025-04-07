@@ -1,0 +1,21 @@
+[Unit]
+Description=Fitcore Gunicorn Service
+After=network.target
+
+[Service]
+User=berta
+Group=berta
+WorkingDirectory=/home/berta/Documents/work/AV-GYM
+Environment="DJANGO_SETTINGS_MODULE=fitcore.settings_production"
+Environment="PATH=/home/berta/Documents/work/AV-GYM/venv/bin:$PATH"
+ExecStart=/home/berta/Documents/work/AV-GYM/venv/bin/gunicorn \
+    --workers 3 \
+    --bind unix:/run/fitcore.sock \
+    --access-logfile /var/log/fitcore/access.log \
+    --error-logfile /var/log/fitcore/error.log \
+    --capture-output \
+    --timeout 120 \
+    fitcore.wsgi:application
+
+[Install]
+WantedBy=multi-user.target

@@ -3,6 +3,31 @@ venv/
 __pycache__/
 *.py[cod]
 *$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Django
+*.log
+*.pot
+*.pyc
+db.sqlite3
+media/
+staticfiles/
 
 # Jekyll site
 _site/
@@ -13,11 +38,36 @@ _site/
 # IDE settings
 .vscode/
 .idea/
+*.swp
+*.swo
 
 # Environment variables
 .env
-*.env
+.env.*
+!.env.example
 
 # System files
 .DS_Store
 Thumbs.db
+
+# Deployment
+*.pid
+*.sock
+
+# Logs
+logs/
+*.log
+
+# Cache
+*.cache
+.pytest_cache/
+
+# Coverage
+htmlcov/
+.coverage
+.coverage.*
+coverage.xml
+*.cover
+
+# Local development
+local_settings.py

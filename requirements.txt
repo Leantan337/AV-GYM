@@ -20,8 +20,10 @@ l18n==2021.3
 openpyxl==3.1.5
 pillow==10.4.0
 pillow_heif==0.22.0
+psycopg2-binary==2.9.9
 pytz==2025.2
 requests==2.32.3
+sentry-sdk==1.40.6
 six==1.17.0
 soupsieve==2.6
 sqlparse==0.5.3
@@ -31,3 +33,9 @@ wagtail==5.2
 webencodings==0.5.1
 Willow==1.6.3
 gunicorn==23.0.0
+uvicorn==0.27.1
+django-storages==1.14.2
+django-redis==5.4.0
+whitenoise==6.6.0
+django-cors-headers==4.3.1
+django-security==0.12.0
