@@ -10,7 +10,7 @@ services:
     name: av-gym
     runtime: python
     buildCommand: "./build.sh"
-    startCommand: "cd fitcore && python -m gunicorn fitcore.asgi:application -k uvicorn.workers.UvicornWorker"
+    startCommand: "cd fitcore && gunicorn fitcore.wsgi:application"
     envVars:
       - key: DATABASE_URL
         fromDatabase:
