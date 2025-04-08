@@ -1,0 +1,157 @@
+{% extends 'translation/base.html' %}
+
+{% block title %}Dashboard{% endblock %}
+
+{% block header %}Translation Dashboard{% endblock %}
+
+{% block header_actions %}
+<div class="btn-toolbar mb-2 mb-md-0">
+    <a href="{% url 'translation:add_translation' %}" class="btn btn-sm btn-primary">
+        <i class="fas fa-plus"></i> Add Translation
+    </a>
+</div>
+{% endblock %}
+
+{% block content %}
+<div class="row mb-4">
+    <div class="col-md-4">
+        <div class="card bg-primary text-white">
+            <div class="card-body">
+                <h5 class="card-title">Total Translations</h5>
+                <h2 class="display-4">{{ total_translations }}</h2>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="card">
+    <div class="card-header">
+        <div class="row align-items-center">
+            <div class="col">
+                <h5 class="mb-0">Manual Translations</h5>
+            </div>
+            <div class="col-md-6">
+                <form method="get" class="d-flex">
+                    <div class="input-group">
+                        <input type="text" name="q" class="form-control" placeholder="Search translations..." value="{{ query }}">
+                        <select name="lang" class="form-select" style="max-width: 150px;">
+                            <option value="">All Languages</option>
+                            {% for lang in languages %}
+                            <option value="{{ lang }}" {% if lang == language %}selected{% endif %}>{{ lang }}</option>
+                            {% endfor %}
+                        </select>
+                        <button type="submit" class="btn btn-primary">
+                            <i class="fas fa-search"></i>
+                        </button>
+                        {% if query or language %}
+                        <a href="{% url 'translation:dashboard' %}" class="btn btn-outline-secondary">
+                            <i class="fas fa-times"></i> Clear
+                        </a>
+                        {% endif %}
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="card-body p-0">
+        <div class="table-responsive">
+            <table class="table table-hover mb-0">
+                <thead class="table-light">
+                    <tr>
+                        <th>Source Text</th>
+                        <th>Translation</th>
+                        <th>Languages</th>
+                        <th>Last Updated</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for translation in page_obj %}
+                    <tr>
+                        <td>{{ translation.source_text|truncatechars:40 }}</td>
+                        <td>{{ translation.translated_text|truncatechars:40 }}</td>
+                        <td>
+                            <span class="badge bg-primary">{{ translation.source_language }}</span>
+                            <i class="fas fa-arrow-right mx-1"></i>
+                            <span class="badge bg-secondary">{{ translation.target_language }}</span>
+                        </td>
+                        <td>{{ translation.updated_at|date:"M d, Y" }}</td>
+                        <td>
+                            <div class="btn-group btn-group-sm" role="group">
+                                <a href="{% url 'translation:edit_translation' translation.pk %}" class="btn btn-outline-primary">
+                                    <i class="fas fa-edit"></i>
+                                </a>
+                                <a href="{% url 'translation:delete_translation' translation.pk %}" class="btn btn-outline-danger">
+                                    <i class="fas fa-trash"></i>
+                                </a>
+                            </div>
+                        </td>
+                    </tr>
+                    {% empty %}
+                    <tr>
+                        <td colspan="5" class="text-center py-4">
+                            <div class="text-muted">
+                                <i class="fas fa-inbox fa-3x mb-3"></i>
+                                <p>No translations found. Start by adding a new translation.</p>
+                                <a href="{% url 'translation:add_translation' %}" class="btn btn-primary">
+                                    <i class="fas fa-plus"></i> Add Translation
+                                </a>
+                            </div>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="card-footer">
+        <div class="d-flex justify-content-center">
+            {% if page_obj.has_other_pages %}
+            <nav>
+                <ul class="pagination mb-0">
+                    {% if page_obj.has_previous %}
+                    <li class="page-item">
+                        <a class="page-link" href="?page=1{% if query %}&q={{ query }}{% endif %}{% if language %}&lang={{ language }}{% endif %}">
+                            <i class="fas fa-angle-double-left"></i>
+                        </a>
+                    </li>
+                    <li class="page-item">
+                        <a class="page-link" href="?page={{ page_obj.previous_page_number }}{% if query %}&q={{ query }}{% endif %}{% if language %}&lang={{ language }}{% endif %}">
+                            <i class="fas fa-angle-left"></i>
+                        </a>
+                    </li>
+                    {% endif %}
+
+                    {% for num in page_obj.paginator.page_range %}
+                        {% if page_obj.number == num %}
+                        <li class="page-item active">
+                            <span class="page-link">{{ num }}</span>
+                        </li>
+                        {% elif num > page_obj.number|add:'-3' and num < page_obj.number|add:'3' %}
+                        <li class="page-item">
+                            <a class="page-link" href="?page={{ num }}{% if query %}&q={{ query }}{% endif %}{% if language %}&lang={{ language }}{% endif %}">
+                                {{ num }}
+                            </a>
+                        </li>
+                        {% endif %}
+                    {% endfor %}
+
+                    {% if page_obj.has_next %}
+                    <li class="page-item">
+                        <a class="page-link" href="?page={{ page_obj.next_page_number }}{% if query %}&q={{ query }}{% endif %}{% if language %}&lang={{ language }}{% endif %}">
+                            <i class="fas fa-angle-right"></i>
+                        </a>
+                    </li>
+                    <li class="page-item">
+                        <a class="page-link" href="?page={{ page_obj.paginator.num_pages }}{% if query %}&q={{ query }}{% endif %}{% if language %}&lang={{ language }}{% endif %}">
+                            <i class="fas fa-angle-double-right"></i>
+                        </a>
+                    </li>
+                    {% endif %}
+                </ul>
+            </nav>
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endblock %}

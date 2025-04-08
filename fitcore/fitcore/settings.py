@@ -56,6 +56,7 @@ INSTALLED_APPS = [
     
     'cms',
     'blog',
+    'translation',
 ]
 
 MIDDLEWARE = [
@@ -67,6 +68,7 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'wagtail.contrib.redirects.middleware.RedirectMiddleware',
+    'translation.middleware.LanguageMiddleware',
 ]
 
 ROOT_URLCONF = 'fitcore.urls'
@@ -158,3 +160,7 @@ WAGTAILADMIN_BASE_URL = 'http://localhost:8000'
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# Authentication URLs
+LOGIN_URL = '/admin/login/'
+LOGIN_REDIRECT_URL = '/translation/dashboard/'

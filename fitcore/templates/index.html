@@ -1,6 +1,7 @@
 {% load static %}
+{% load translation_tags %}
 <!DOCTYPE html>
-<html lang="en">
+<html lang="{% if request.GET.lang %}{{ request.GET.lang }}{% else %}en{% endif %}">
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -42,6 +43,22 @@
 		.hero-bg-2 {
 			background-image: url('{% static "cms/assets/images/hero1-bg2.jpg" %}');
 		}
+		.translate-button {
+			display: flex;
+			align-items: center;
+			cursor: pointer;
+			margin-left: 15px;
+		}
+		.translate-button i {
+			margin-right: 5px;
+			color: var(--color-primary);
+		}
+		@media (max-width: 768px) {
+			.translate-button {
+				margin-left: 0;
+				margin-top: 5px;
+			}
+		}
 	</style>
 
 </head>
@@ -58,6 +75,9 @@
 					</div>
 					<div class="location">
 						<i class="fa-solid fa-location-dot"></i>6391 Elgin St. Celina, 10299
+					</div>
+					<div class="translate-button" id="translate-btn">
+						<i class="fa-solid fa-language"></i><a href="?lang={% if request.GET.lang == 'es' %}en{% else %}es{% endif %}"><span>{% if request.GET.lang == 'es' %}English{% else %}Español{% endif %}</span></a>
 					</div>
 				</div>
 				<div class="top-right">
@@ -81,22 +101,22 @@
 				</div>
 				<div class="main-menu">
 					<ul>
-						<li><a href="{% url 'cms:home' %}">Home</a></li>
-						<li><a href="{% url 'cms:about' %}">About</a></li>
-						<li><a href="{% url 'cms:classes' %}">Classes</a></li>
+						<li><a href="{% url 'cms:home' %}">{{ "Home"|translate_text:request.GET.lang }}</a></li>
+						<li><a href="{% url 'cms:about' %}">{{ "About"|translate_text:request.GET.lang }}</a></li>
+						<li><a href="{% url 'cms:classes' %}">{{ "Classes"|translate_text:request.GET.lang }}</a></li>
 						<li class="dropdown">
-							<a href="#">Pages<i class="fa-solid fa-chevron-down"></i></a>
+							<a href="#">{{ "Pages"|translate_text:request.GET.lang }}<i class="fa-solid fa-chevron-down"></i></a>
 							<ul class="sub-menu">
-								<li><a href="{% url 'cms:class_schedule' %}">Class Schedule</a></li>
-								<li><a href="{% url 'cms:gallery' %}">Gallery</a></li>
-								<li><a href="{% url 'cms:pricing' %}">Our Pricing</a></li>
-								<li><a href="{% url 'cms:trainers' %}">Trainers</a></li>
-								<li><a href="{% url 'cms:blog_details' %}">Blog Details</a></li>
-								<li><a href="{% url 'cms:class_details' %}">Class Details</a></li>
+								<li><a href="{% url 'cms:class_schedule' %}">{{ "Class Schedule"|translate_text:request.GET.lang }}</a></li>
+								<li><a href="{% url 'cms:gallery' %}">{{ "Gallery"|translate_text:request.GET.lang }}</a></li>
+								<li><a href="{% url 'cms:pricing' %}">{{ "Our Pricing"|translate_text:request.GET.lang }}</a></li>
+								<li><a href="{% url 'cms:trainers' %}">{{ "Trainers"|translate_text:request.GET.lang }}</a></li>
+								<li><a href="{% url 'cms:blog_details' %}">{{ "Blog Details"|translate_text:request.GET.lang }}</a></li>
+								<li><a href="{% url 'cms:class_details' %}">{{ "Class Details"|translate_text:request.GET.lang }}</a></li>
 							</ul>
 						</li>
-						<li><a href="{% url 'cms:blog' %}">Blog</a></li>
-						<li><a href="{% url 'cms:contact' %}">Contact</a></li>
+						<li><a href="{% url 'cms:blog' %}">{{ "Blog"|translate_text:request.GET.lang }}</a></li>
+						<li><a href="{% url 'cms:contact' %}">{{ "Contact"|translate_text:request.GET.lang }}</a></li>
 					</ul>
 				</div>
 				<div class="button">
@@ -124,22 +144,22 @@
 		<div class="menu-content">
 			<div class="menu">
 				<ul>
-					<li><a href="{% url 'cms:home' %}">Home</a></li>
-					<li><a href="{% url 'cms:about' %}">About</a></li>
-					<li><a href="{% url 'cms:classes' %}">Classes</a></li>
+					<li><a href="{% url 'cms:home' %}">{{ "Home"|translate_text:request.GET.lang }}</a></li>
+					<li><a href="{% url 'cms:about' %}">{{ "About"|translate_text:request.GET.lang }}</a></li>
+					<li><a href="{% url 'cms:classes' %}">{{ "Classes"|translate_text:request.GET.lang }}</a></li>
 					<li class="mobail-dropdown">
-						<a href="#">Pages<i class="fa-solid fa-chevron-down"></i></a>
+						<a href="#">{{ "Pages"|translate_text:request.GET.lang }}<i class="fa-solid fa-chevron-down"></i></a>
 						<ul class="mobail-submenu">
-							<li><a href="{% url 'cms:class_schedule' %}">Class Schedule</a></li>
-							<li><a href="{% url 'cms:gallery' %}">Gallery</a></li>
-							<li><a href="{% url 'cms:pricing' %}">Our Pricing</a></li>
-							<li><a href="{% url 'cms:trainers' %}">Trainers</a></li>
-							<li><a href="{% url 'cms:blog_details' %}">Blog Details</a></li>
-							<li><a href="{% url 'cms:class_details' %}">Class Details</a></li>
+							<li><a href="{% url 'cms:class_schedule' %}">{{ "Class Schedule"|translate_text:request.GET.lang }}</a></li>
+							<li><a href="{% url 'cms:gallery' %}">{{ "Gallery"|translate_text:request.GET.lang }}</a></li>
+							<li><a href="{% url 'cms:pricing' %}">{{ "Our Pricing"|translate_text:request.GET.lang }}</a></li>
+							<li><a href="{% url 'cms:trainers' %}">{{ "Trainers"|translate_text:request.GET.lang }}</a></li>
+							<li><a href="{% url 'cms:blog_details' %}">{{ "Blog Details"|translate_text:request.GET.lang }}</a></li>
+							<li><a href="{% url 'cms:class_details' %}">{{ "Class Details"|translate_text:request.GET.lang }}</a></li>
 						</ul>
 					</li>
-					<li><a href="{% url 'cms:blog' %}">Blog</a></li>
-					<li><a href="{% url 'cms:contact' %}">Contact</a></li>
+					<li><a href="{% url 'cms:blog' %}">{{ "Blog"|translate_text:request.GET.lang }}</a></li>
+					<li><a href="{% url 'cms:contact' %}">{{ "Contact"|translate_text:request.GET.lang }}</a></li>
 				</ul>
 			</div>
 			<div class="info">
@@ -150,20 +170,15 @@
 				</div>
 				<div class="info-box">
 					<i class="fa-solid fa-phone"></i>
-					<a href="#">(209) 555-0104</a>
+					(603) 555-0123
 				</div>
 				<div class="info-box">
 					<i class="fa-solid fa-envelope"></i>
-					<a href="#">info@example.com</a>
+					fitcoredemo@example.com
 				</div>
 			</div>
-			<div class="component">
-				<div class="search-icon">
-					<i class="fa-solid fa-magnifying-glass"></i>
-				</div>
-				<div class="button">
-					<a href="#" class="btn">Get A Quote<i class="fa-solid fa-arrow-right"></i></a>
-				</div>
+			<div class="button">
+				<a href="#" class="btn">Join Now</a>
 			</div>
 		</div>
 	</div>
@@ -176,9 +191,9 @@
 		<div class="hero-carousel owl-carousel">
 			<div class="hero-content hero-bg-1">
 				<div class="container">
-					<h5><span></span>Welcome to Gymix Gym</h5>
-					<h1 class="heading">Transform with a Fitness Expert</h1>
-					<p class="discription">Achieve your peak fitness with expert guidance, personalized workouts, and a supportive community. </p>
+					<h5><span></span>{{ "Welcome to Gymix Gym"|translate_text:request.GET.lang }}</h5>
+					<h1>{{ "Unlock Your Potential, Embrace the Challenge"|translate_text:request.GET.lang }}</h1>
+					<p>{{ "Join our vibrant fitness community today"|translate_text:request.GET.lang }}</p>
 					<div class="hero-about">
 						<div class="button">
 							<a href="#" class="btn">More About Us<i class="fa-solid fa-arrow-right"></i></a>
@@ -200,9 +215,9 @@
 			</div>
 			<div class="hero-content hero-bg-2">
 				<div class="container">
-					<h5><span></span>Welcome to Gymix Gym</h5>
-					<h1 class="heading">Transform with a Fitness Expert</h1>
-					<p class="discription">Achieve your peak fitness with expert guidance, personalized workouts, and a supportive community. </p>
+					<h5><span></span>{{ "Welcome to Gymix Gym"|translate_text:request.GET.lang }}</h5>
+					<h1>{{ "Unlock Your Potential, Embrace the Challenge"|translate_text:request.GET.lang }}</h1>
+					<p>{{ "Join our vibrant fitness community today"|translate_text:request.GET.lang }}</p>
 					<div class="hero-about">
 						<div class="button">
 							<a href="#" class="btn">More About Us<i class="fa-solid fa-arrow-right"></i></a>
@@ -1113,6 +1128,6 @@
 	<script src="{% static 'cms/assets/js/owl.carousel.min.js' %}"></script>
 	<script src="{% static 'cms/assets/js/venobox.min.js' %}"></script>
 	<script src="{% static 'cms/assets/js/script.js' %}"></script>
-
+	
 </body>
 </html>

@@ -27,6 +27,7 @@ urlpatterns = [
     path('django-admin/', admin.site.urls),
     path('admin/', include(wagtailadmin_urls)),
     path('documents/', include(wagtaildocs_urls)),
+    path('translation/', include('translation.urls', namespace='translation')),
     path('blog/', include('blog.urls', namespace='blog')),  # Add blog URLs with namespace
     path('', include('cms.urls')),
     # Let Wagtail handle all other URLs

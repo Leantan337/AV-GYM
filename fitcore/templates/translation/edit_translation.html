@@ -1,0 +1,77 @@
+{% extends 'translation/base.html' %}
+
+{% block title %}Edit Translation{% endblock %}
+
+{% block header %}Edit Translation{% endblock %}
+
+{% block header_actions %}
+<div class="btn-toolbar mb-2 mb-md-0">
+    <a href="{% url 'translation:dashboard' %}" class="btn btn-sm btn-outline-secondary">
+        <i class="fas fa-arrow-left"></i> Back to Dashboard
+    </a>
+</div>
+{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header">
+                <h5 class="mb-0">Edit Translation</h5>
+            </div>
+            <div class="card-body">
+                <form method="post">
+                    {% csrf_token %}
+                    <div class="mb-3">
+                        <label for="source_language" class="form-label">Source Language</label>
+                        <select class="form-select" id="source_language" name="source_language">
+                            <option value="en" {% if translation.source_language == 'en' %}selected{% endif %}>English</option>
+                            <option value="es" {% if translation.source_language == 'es' %}selected{% endif %}>Spanish</option>
+                            <option value="fr" {% if translation.source_language == 'fr' %}selected{% endif %}>French</option>
+                            <option value="de" {% if translation.source_language == 'de' %}selected{% endif %}>German</option>
+                            <option value="ru" {% if translation.source_language == 'ru' %}selected{% endif %}>Russian</option>
+                            <option value="zh" {% if translation.source_language == 'zh' %}selected{% endif %}>Chinese</option>
+                            <option value="ja" {% if translation.source_language == 'ja' %}selected{% endif %}>Japanese</option>
+                            <option value="ar" {% if translation.source_language == 'ar' %}selected{% endif %}>Arabic</option>
+                            <option value="pt" {% if translation.source_language == 'pt' %}selected{% endif %}>Portuguese</option>
+                            <option value="it" {% if translation.source_language == 'it' %}selected{% endif %}>Italian</option>
+                            <!-- Add more languages as needed -->
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="source_text" class="form-label">Source Text</label>
+                        <textarea class="form-control" id="source_text" name="source_text" rows="3" required>{{ translation.source_text }}</textarea>
+                        <div class="form-text">Enter the original text that needs translation.</div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="target_language" class="form-label">Target Language</label>
+                        <select class="form-select" id="target_language" name="target_language" required>
+                            <option value="">Select target language</option>
+                            <option value="en" {% if translation.target_language == 'en' %}selected{% endif %}>English</option>
+                            <option value="es" {% if translation.target_language == 'es' %}selected{% endif %}>Spanish</option>
+                            <option value="fr" {% if translation.target_language == 'fr' %}selected{% endif %}>French</option>
+                            <option value="de" {% if translation.target_language == 'de' %}selected{% endif %}>German</option>
+                            <option value="ru" {% if translation.target_language == 'ru' %}selected{% endif %}>Russian</option>
+                            <option value="zh" {% if translation.target_language == 'zh' %}selected{% endif %}>Chinese</option>
+                            <option value="ja" {% if translation.target_language == 'ja' %}selected{% endif %}>Japanese</option>
+                            <option value="ar" {% if translation.target_language == 'ar' %}selected{% endif %}>Arabic</option>
+                            <option value="pt" {% if translation.target_language == 'pt' %}selected{% endif %}>Portuguese</option>
+                            <option value="it" {% if translation.target_language == 'it' %}selected{% endif %}>Italian</option>
+                            <!-- Add more languages as needed -->
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="translated_text" class="form-label">Translated Text</label>
+                        <textarea class="form-control" id="translated_text" name="translated_text" rows="3" required>{{ translation.translated_text }}</textarea>
+                        <div class="form-text">Enter the manually translated text in the target language.</div>
+                    </div>
+                    <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                        <a href="{% url 'translation:dashboard' %}" class="btn btn-outline-secondary">Cancel</a>
+                        <button type="submit" class="btn btn-primary">Update Translation</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
