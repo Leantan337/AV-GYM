@@ -122,7 +122,6 @@
 						<i class="fa-solid fa-language"></i>
 						<select onchange="window.location.href='?lang=' + this.value">
 							<option value="en" {% if request.GET.lang == 'en' or not request.GET.lang %}selected{% endif %}>{{ "English"|translate_text:request.GET.lang }}</option>
-							<option value="es" {% if request.GET.lang == 'es' %}selected{% endif %}>{{ "Spanish"|translate_text:request.GET.lang }}</option>
 							<option value="am" {% if request.GET.lang == 'am' %}selected{% endif %}>{{ "Amharic"|translate_text:request.GET.lang }}</option>
 							<option value="ti" {% if request.GET.lang == 'ti' %}selected{% endif %}>{{ "Tigrinya"|translate_text:request.GET.lang }}</option>
 						</select>
@@ -326,35 +325,35 @@
 	<section class="marquee-section">
 		<div class="marquee-box">
 			<div class="marquee-item">
-				<span class="text">Yoga Flow</span>  
+				<span class="text">{{ "Yoga Flow"|translate_text:request.GET.lang }}</span>  
 				<span class="dots"></span>
-				<span class="text">Spin & Sweat</span>
+				<span class="text">{{ "Spin & Sweat"|translate_text:request.GET.lang }}</span>
 				<span class="dots"></span>
-				<span class="text">Pilates Core</span>
+				<span class="text">{{ "Pilates Core"|translate_text:request.GET.lang }}</span>
 				<span class="dots"></span>
-				<span class="text">CrossFit</span>
+				<span class="text">{{ "CrossFit"|translate_text:request.GET.lang }}</span>
 				<span class="dots"></span>
-				<span class="text">Core Crusher</span>
+				<span class="text">{{ "Core Crusher"|translate_text:request.GET.lang }}</span>
 				<span class="dots"></span>
-				<span class="text">Pilates Reformer</span>
+				<span class="text">{{ "Pilates Reformer"|translate_text:request.GET.lang }}</span>
 				<span class="dots"></span>
-				<span class="text">Zumba Energy</span>
+				<span class="text">{{ "Zumba Energy"|translate_text:request.GET.lang }}</span>
 				<span class="dots"></span>
 			</div>
 			<div class="marquee-item">
-				<span class="text">Yoga Flow</span>  
+				<span class="text">{{ "Yoga Flow"|translate_text:request.GET.lang }}</span>  
 				<span class="dots"></span>
-				<span class="text">Spin & Sweat</span>
+				<span class="text">{{ "Spin & Sweat"|translate_text:request.GET.lang }}</span>
 				<span class="dots"></span>
-				<span class="text">Pilates Core</span>
+				<span class="text">{{ "Pilates Core"|translate_text:request.GET.lang }}</span>
 				<span class="dots"></span>
-				<span class="text">CrossFit</span>
+				<span class="text">{{ "CrossFit"|translate_text:request.GET.lang }}</span>
 				<span class="dots"></span>
-				<span class="text">Core Crusher</span>
+				<span class="text">{{ "Core Crusher"|translate_text:request.GET.lang }}</span>
 				<span class="dots"></span>
-				<span class="text">Pilates Reformer</span>
+				<span class="text">{{ "Pilates Reformer"|translate_text:request.GET.lang }}</span>
 				<span class="dots"></span>
-				<span class="text">Zumba Energy</span>
+				<span class="text">{{ "Zumba Energy"|translate_text:request.GET.lang }}</span>
 				<span class="dots"></span>
 			</div>
 		</div>
@@ -457,7 +456,7 @@
 				</div>
 				<div class="accordion-header">
 					<div class="class-title">
-						<h3>Yoga Flow Basics</h3>
+						<h3>{{ "Yoga Flow Basics"|translate_text:request.GET.lang }}</h3>
 					</div>
 					<div class="class-box">
 						<div class="item">
@@ -535,7 +534,7 @@
 				</div>
 				<div class="accordion-header">
 					<div class="class-title">
-						<h3>Zumba Energy</h3>
+						<h3>{{"Zumba Energy"|translate_text:request.GET.lang }}</h3>
 					</div>
 					<div class="class-box">
 						<div class="item">

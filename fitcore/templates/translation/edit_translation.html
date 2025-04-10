@@ -26,16 +26,8 @@
                         <label for="source_language" class="form-label">Source Language</label>
                         <select class="form-select" id="source_language" name="source_language">
                             <option value="en" {% if translation.source_language == 'en' %}selected{% endif %}>English</option>
-                            <option value="es" {% if translation.source_language == 'es' %}selected{% endif %}>Spanish</option>
-                            <option value="fr" {% if translation.source_language == 'fr' %}selected{% endif %}>French</option>
-                            <option value="de" {% if translation.source_language == 'de' %}selected{% endif %}>German</option>
-                            <option value="ru" {% if translation.source_language == 'ru' %}selected{% endif %}>Russian</option>
-                            <option value="zh" {% if translation.source_language == 'zh' %}selected{% endif %}>Chinese</option>
-                            <option value="ja" {% if translation.source_language == 'ja' %}selected{% endif %}>Japanese</option>
-                            <option value="ar" {% if translation.source_language == 'ar' %}selected{% endif %}>Arabic</option>
-                            <option value="pt" {% if translation.source_language == 'pt' %}selected{% endif %}>Portuguese</option>
-                            <option value="it" {% if translation.source_language == 'it' %}selected{% endif %}>Italian</option>
-                            <!-- Add more languages as needed -->
+                            <option value="am" {% if translation.source_language == 'am' %}selected{% endif %}>Amharic</option>
+                            <option value="ti" {% if translation.source_language == 'ti' %}selected{% endif %}>Tigrinya</option>
                         </select>
                     </div>
                     <div class="mb-3">
@@ -48,16 +40,8 @@
                         <select class="form-select" id="target_language" name="target_language" required>
                             <option value="">Select target language</option>
                             <option value="en" {% if translation.target_language == 'en' %}selected{% endif %}>English</option>
-                            <option value="es" {% if translation.target_language == 'es' %}selected{% endif %}>Spanish</option>
-                            <option value="fr" {% if translation.target_language == 'fr' %}selected{% endif %}>French</option>
-                            <option value="de" {% if translation.target_language == 'de' %}selected{% endif %}>German</option>
-                            <option value="ru" {% if translation.target_language == 'ru' %}selected{% endif %}>Russian</option>
-                            <option value="zh" {% if translation.target_language == 'zh' %}selected{% endif %}>Chinese</option>
-                            <option value="ja" {% if translation.target_language == 'ja' %}selected{% endif %}>Japanese</option>
-                            <option value="ar" {% if translation.target_language == 'ar' %}selected{% endif %}>Arabic</option>
-                            <option value="pt" {% if translation.target_language == 'pt' %}selected{% endif %}>Portuguese</option>
-                            <option value="it" {% if translation.target_language == 'it' %}selected{% endif %}>Italian</option>
-                            <!-- Add more languages as needed -->
+                            <option value="am" {% if translation.target_language == 'am' %}selected{% endif %}>Amharic</option>
+                            <option value="ti" {% if translation.target_language == 'ti' %}selected{% endif %}>Tigrinya</option>
                         </select>
                     </div>
                     <div class="mb-3">

@@ -7,7 +7,7 @@ class LanguageMiddleware(MiddlewareMixin):
     """
     def process_request(self, request):
         language = request.GET.get('lang', 'en')  # Default to English
-        if language in ['en', 'es', 'am', 'ti']:  # Only allow supported languages
+        if language in ['en', 'am', 'ti']:  # Only allow supported languages
             translation.activate(language)
             request.LANGUAGE_CODE = translation.get_language()
             request.GET = request.GET.copy()  # Make GET mutable
@@ -15,6 +15,6 @@ class LanguageMiddleware(MiddlewareMixin):
 
     def process_response(self, request, response):
         language = request.GET.get('lang', None)
-        if language and language in ['en', 'es']:
+        if language and language in ['en', 'am', 'ti']:  # Updated to match supported languages
             response['Content-Language'] = language
         return response
