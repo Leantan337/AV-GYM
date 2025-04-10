@@ -52,6 +52,16 @@
 						<i class="fa-solid fa-location-dot"></i>{{ "6391 Elgin St. Celina, 10299"|translate_text:request.GET.lang }}
 					</div>
 				</div>
+
+				<div class="translate-button" id="translate-btn">
+					<i class="fa-solid fa-language"></i>
+					<select onchange="window.location.href='?lang=' + this.value">
+						<option value="en" {% if request.GET.lang == 'en' or not request.GET.lang %}selected{% endif %}>{{ "English"|translate_text:request.GET.lang }}</option>
+						<option value="am" {% if request.GET.lang == 'am' %}selected{% endif %}>{{ "Amharic"|translate_text:request.GET.lang }}</option>
+						<option value="ti" {% if request.GET.lang == 'ti' %}selected{% endif %}>{{ "Tigrinya"|translate_text:request.GET.lang }}</option>
+					</select>
+				</div>
+
 				<div class="top-right">
 					<div class="phone">
 						<a href="tel:6295550129"><i class="fa-solid fa-phone"></i>{{ "(629) 555-0129"|translate_text:request.GET.lang }}</a>
