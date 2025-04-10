@@ -5,7 +5,7 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>FitCore</title>
+	<title>{{ "FitCore"|translate_text:request.GET.lang }}</title>
 
 	<link rel="icon" type="image/x-icon" href="{% static 'cms/assets/images/favicon.png' %}">
 
@@ -48,28 +48,57 @@
 			align-items: center;
 			cursor: pointer;
 			margin-left: 15px;
+			position: relative;
 		}
 		.translate-button select {
 			appearance: none;
 			-webkit-appearance: none;
 			-moz-appearance: none;
-			padding-right: 15px;
+			padding: 5px 25px 5px 10px;
+			background-color: rgba(255, 255, 255, 0.1);
+			border: 1px solid rgba(255, 255, 255, 0.2);
+			border-radius: 4px;
+			color: #fff;
+			font-size: 14px;
+			cursor: pointer;
+			transition: all 0.3s ease;
+		}
+		.translate-button select:hover {
+			background-color: rgba(255, 255, 255, 0.2);
 		}
 		.translate-button select:focus {
 			outline: none;
+			box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.3);
 		}
 		.translate-button select option {
 			background: #333;
 			color: #fff;
+			padding: 10px;
 		}
 		.translate-button i {
-			margin-right: 5px;
+			margin-right: 8px;
 			color: var(--color-primary);
+			font-size: 16px;
+		}
+		.translate-button::after {
+			content: '\f107';
+			font-family: 'Font Awesome 6 Free';
+			font-weight: 900;
+			position: absolute;
+			right: 8px;
+			top: 50%;
+			transform: translateY(-50%);
+			color: #fff;
+			pointer-events: none;
 		}
 		@media (max-width: 768px) {
 			.translate-button {
-				margin-left: 0;
-				margin-top: 5px;
+				margin: 10px 0;
+				justify-content: center;
+			}
+			.translate-button select {
+				width: 100%;
+				max-width: 200px;
 			}
 		}
 	</style>
@@ -84,24 +113,24 @@
 			<div class="container">
 				<div class="top-left">
 					<div class="mail">
-						<a href="mailto:info@example.com"><i class="fa-solid fa-envelope"></i>info@example.com</a>
+						<a href="mailto:info@example.com"><i class="fa-solid fa-envelope"></i>{{ "info@example.com"|translate_text:request.GET.lang }}</a>
 					</div>
 					<div class="location">
-						<i class="fa-solid fa-location-dot"></i>6391 Elgin St. Celina, 10299
+						<i class="fa-solid fa-location-dot"></i>{{ "6391 Elgin St. Celina, 10299"|translate_text:request.GET.lang }}
 					</div>
 					<div class="translate-button" id="translate-btn">
 						<i class="fa-solid fa-language"></i>
-						<select onchange="window.location.href='?lang=' + this.value" style="background: transparent; border: none; color: #fff; cursor: pointer; font-size: 14px; margin-left: 5px;">
-							<option value="en" {% if request.GET.lang == 'en' or not request.GET.lang %}selected{% endif %}>English</option>
-							<option value="es" {% if request.GET.lang == 'es' %}selected{% endif %}>Español</option>
-							<option value="am" {% if request.GET.lang == 'am' %}selected{% endif %}>አማርኛ</option>
-							<option value="ti" {% if request.GET.lang == 'ti' %}selected{% endif %}>ትግርኛ</option>
+						<select onchange="window.location.href='?lang=' + this.value">
+							<option value="en" {% if request.GET.lang == 'en' or not request.GET.lang %}selected{% endif %}>{{ "English"|translate_text:request.GET.lang }}</option>
+							<option value="es" {% if request.GET.lang == 'es' %}selected{% endif %}>{{ "Spanish"|translate_text:request.GET.lang }}</option>
+							<option value="am" {% if request.GET.lang == 'am' %}selected{% endif %}>{{ "Amharic"|translate_text:request.GET.lang }}</option>
+							<option value="ti" {% if request.GET.lang == 'ti' %}selected{% endif %}>{{ "Tigrinya"|translate_text:request.GET.lang }}</option>
 						</select>
 					</div>
 				</div>
 				<div class="top-right">
 					<div class="phone">
-						<a href="tel:6295550129"><i class="fa-solid fa-phone"></i>(629) 555-0129</a>
+						<a href="tel:6295550129"><i class="fa-solid fa-phone"></i>{{ "(629) 555-0129"|translate_text:request.GET.lang }}</a>
 					</div>
 					<div class="separator"></div>
 					<div class="social">
@@ -139,7 +168,7 @@
 					</ul>
 				</div>
 				<div class="button">
-					<a href="#" class="btn">Join Now<i class="fa-solid fa-angles-right"></i></a>
+					<a href="#" class="btn">{{ "Join Now"|translate_text:request.GET.lang }}<i class="fa-solid fa-angles-right"></i></a>
 				</div>
 			</div>
 		</div>	
@@ -153,7 +182,7 @@
 		<div class="menu-bar">
 			<div class="site-logo">
 				<a href="{% url 'cms:home' %}">
-					<img src="{% static 'cms/assets/images/mobail-logo.png' %}" alt="logo">
+					<img src="{% static 'cms/assets/images/mobail-logo.png' %}" alt="{{ "FitCore Mobile Logo"|translate_text:request.GET.lang }}">
 				</a>
 			</div>
 			<div class="menu-toggle">
@@ -182,22 +211,22 @@
 				</ul>
 			</div>
 			<div class="info">
-				<h3 class="title">Contact Info</h3>
+				<h3 class="title">{{ "Contact Info"|translate_text:request.GET.lang }}</h3>
 				<div class="info-box">
 					<i class="fa-solid fa-location-dot"></i>
-					6391 Elgin St. Celina, Delaware 10299
+					{{ "6391 Elgin St. Celina, Delaware 10299"|translate_text:request.GET.lang }}
 				</div>
 				<div class="info-box">
 					<i class="fa-solid fa-phone"></i>
-					(603) 555-0123
+					{{ "(603) 555-0123"|translate_text:request.GET.lang }}
 				</div>
 				<div class="info-box">
 					<i class="fa-solid fa-envelope"></i>
-					fitcoredemo@example.com
+					{{ "fitcoredemo@example.com"|translate_text:request.GET.lang }}
 				</div>
 			</div>
 			<div class="button">
-				<a href="#" class="btn">Join Now</a>
+				<a href="#" class="btn">{{ "Join Now"|translate_text:request.GET.lang }}</a>
 			</div>
 		</div>
 	</div>
@@ -210,52 +239,29 @@
 		<div class="hero-carousel owl-carousel">
 			<div class="hero-content hero-bg-1">
 				<div class="container">
-					<h5><span></span>Welcome To Gymix Gym</h5>
-                    <h1>Transform with<br>a Fitness Expert</h1>
-                    <p>Achieve your peak fitness with expert guidance,<br>personalized workouts, and a supportive community.</p>
+					<h5><span></span>{{ "Welcome To Gymix Gym"|translate_text:request.GET.lang }}</h5>
+					<h1>{{ "Transform with a Fitness Expert"|translate_text:request.GET.lang }}</h1>
+					<p>{{ "Achieve your peak fitness with expert guidance, personalized workouts, and a supportive community."|translate_text:request.GET.lang }}</p>
 					<div class="hero-about">
 						<div class="button">
-							<a href="#" class="btn">More About Us<i class="fa-solid fa-arrow-right"></i></a>
+							<a href="#" class="btn">{{ "More About Us"|translate_text:request.GET.lang }}<i class="fa-solid fa-arrow-right"></i></a>
 						</div>
 						<div class="box">
 							<div class="image-box">
-								<img src="{% static 'cms/assets/images/hero-img.png' %}" alt="images">
+								<img src="{% static 'cms/assets/images/hero-img.png' %}" alt="{{ "Hero Section Image"|translate_text:request.GET.lang }}">
 							</div>
 							<div class="count-box">
 								<h4 class="number">750k<span>+</span></h4>
-								<p>Happy customers</p>
+								<p>{{ "Happy customers"|translate_text:request.GET.lang }}</p>
 							</div>
 						</div>
 					</div>
 					<div class="hero-btn">
-						<a href="{% url 'cms:classes' %}" class="btn btn-primary">Get Started</a>
+						<a href="{% url 'cms:classes' %}" class="btn btn-primary">{{ "Get Started"|translate_text:request.GET.lang }}</a>
 					</div>
 				</div>
 			</div>
-			<div class="hero-content hero-bg-2">
-				<div class="container">
-					<h5><span></span>Welcome To Gymix Gym</h5>
-                    <h1>Transform with<br>a Fitness Expert</h1>
-                    <p>Achieve your peak fitness with expert guidance,<br>personalized workouts, and a supportive community.</p>
-					<div class="hero-about">
-						<div class="button">
-							<a href="#" class="btn">More About Us<i class="fa-solid fa-arrow-right"></i></a>
-						</div>
-						<div class="box">
-							<div class="image-box">
-								<img src="{% static 'cms/assets/images/hero-img.png' %}" alt="images">
-							</div>
-							<div class="count-box">
-								<h4 class="number">750k<span>+</span></h4>
-								<p>Happy customers</p>
-							</div>
-						</div>
-					</div>
-					<div class="hero-btn">
-						<a href="{% url 'cms:classes' %}" class="btn btn-primary">Get Started</a>
-					</div>
-				</div>
-			</div>
+
 		</div>
 	</section>
 	
@@ -362,56 +368,57 @@
 		<div class="container">
 			<div class="top">
 				<div class="section-title">
-					<h4 class="subtitle"><span>Our Classes</span></h4>
-					<h1 class="title">Your Ultimate Fitness Journey Starts Here</h1>
+					<h4 class="subtitle"><span>{{ "Our Classes"|translate_text:request.GET.lang }}</span></h4>
+					<h1 class="title">{{ "Your Ultimate Fitness Journey Starts Here"|translate_text:request.GET.lang }}</h1>
 				</div>
 				<div class="button">
-					<a href="#" class="btn">View Classes<i class="fa-solid fa-arrow-right"></i></a>
+					<a href="{% url 'cms:classes' %}" class="btn">{{ "View Classes"|translate_text:request.GET.lang }}<i class="fa-solid fa-arrow-right"></i></a>
 				</div>
 			</div>
 			<div class="main-accordion">
 				<div class="accordion-header">
 					<div class="class-title">
-						<h3>Spin & Sweat</h3>
+						<h3>{{ "Yoga Flow"|translate_text:request.GET.lang }}</h3>
 					</div>
 					<div class="class-box">
 						<div class="item">
-							<span class="heading">Level:</span>
-							<span class="data">Low</span>
+							<span class="heading">{{ "Level"|translate_text:request.GET.lang }}:</span>
+							<span class="data">{{ "Low"|translate_text:request.GET.lang }}</span>
 						</div>
 						<span class="separetor"></span>
 						<div class="item">
-							<span class="heading">Duration:</span>
-							<span class="data">45 mins</span>
+							<span class="heading">{{ "Duration"|translate_text:request.GET.lang }}:</span>
+							<span class="data">{{ "45 mins"|translate_text:request.GET.lang }}</span>
 						</div>
 						<span class="separetor"></span>
 						<div class="item">
-							<span class="heading">Session:</span>
-							<span class="data">3 / month</span>
+							<span class="heading">{{ "Session"|translate_text:request.GET.lang }}:</span>
+							<span class="data">{{ "3 / month"|translate_text:request.GET.lang }}</span>
 						</div>
 					</div>
 					<div class="class-button">
-						<a href="#"><i class="fa-solid fa-arrow-right"></i></a>
+						<a href="{% url 'cms:class_details' %}"><i class="fa-solid fa-arrow-right"></i></a>
 					</div>
 				</div>
 				<div class="accordion-content">
 					<div class="content-box">
 						<div class="content-left">
-							<p>Build strength, endurance, and fitness with dynamic workouts and expert guidance for a balanced, powerful physique.</p>
-							<p class="title">Key Benefits:</p>
+							<p>{{ "A dynamic yoga class that combines breath and movement for a balanced practice."|translate_text:request.GET.lang }}</p>
+							<p class="title">{{ "Key Benefits"|translate_text:request.GET.lang }}:</p>
 							<ul>
-								<li>Boosts strength and stamina.</li>
-								<li>Enhances overall athletic performance.</li>
+								<li>{{ "Boosts strength and stamina"|translate_text:request.GET.lang }}</li>
+								<li>{{ "Enhances overall athletic performance"|translate_text:request.GET.lang }}</li>
+								<li>{{ "Improves flexibility and balance"|translate_text:request.GET.lang }}</li>
 							</ul>
 						</div>
 						<div class="content-right">
-							<img src="{% static 'cms/assets/images/class-img-01.jpg' %}" alt="images">
+							<img src="{% static 'cms/assets/images/class-img-01.jpg' %}" alt="{{ 'Yoga Flow Class'|translate_text:request.GET.lang }}">
 						</div>
 					</div>
 				</div>
 				<div class="accordion-header">
 					<div class="class-title">
-						<h3>HIIT Power Hour</h3>
+						<h3>{{ "HIIT Training"|translate_text:request.GET.lang }}</h3>
 					</div>
 					<div class="class-box">
 						<div class="item">
@@ -436,7 +443,7 @@
 				<div class="accordion-content">
 					<div class="content-box">
 						<div class="content-left">
-							<p>Build strength, endurance, and fitness with dynamic workouts and expert guidance for a balanced, powerful physique.</p>
+							<p>{{ "High-intensity interval training for maximum calorie burn and cardiovascular fitness."|translate_text:request.GET.lang }}</p>
 							<p class="title">Key Benefits:</p>
 							<ul>
 								<li>Boosts strength and stamina.</li>
@@ -489,7 +496,7 @@
 				</div>
 				<div class="accordion-header">
 					<div class="class-title">
-						<h3>Pilates Reformer</h3>
+						<h3>{{ "Pilates Reformer"|translate_text:request.GET.lang }}</h3>
 					</div>
 					<div class="class-box">
 						<div class="item">
@@ -575,8 +582,8 @@
 
 	<section class="choose-us-section">
 		<div class="section-title">
-			<h4 class="subtitle"><span>Why Choose Us</span></h4>
-			<h1 class="title">Top trainers, best equipment, supportive community</h1>
+			<h4 class="subtitle"><span>{{ "Why Choose Us"|translate_text:request.GET.lang }}</span></h4>
+			<h1 class="title">{{ "Top trainers, best equipment, supportive community"|translate_text:request.GET.lang }}</h1>
 		</div>	
 	</section>
 
@@ -588,22 +595,22 @@
 		<div class="container">
 			<div class="join-content">
 				<div class="content-left">
-					<p>Achieve your health goals with expert trainers, state-of-the-art equipment, and a supportive community designed to empower your fitness journey.</p>
+					<p>{{ "Achieve your health goals with expert trainers, state-of-the-art equipment, and a supportive community designed to empower your fitness journey."|translate_text:request.GET.lang }}</p>
 					<div class="box">
 						<span class="number">01</span>
-						<span class="text">Unparalleled Personal Training</span>
+						<span class="text">{{ "Unparalleled Personal Training"|translate_text:request.GET.lang }}</span>
 					</div>
 					<div class="box middle-item">
-						<span class="text two">Studios and luxury amenities</span>
+						<span class="text two">{{ "Studios and luxury amenities"|translate_text:request.GET.lang }}</span>
 						<span class="number two">02</span>
 					</div>
 					<div class="box">
 						<span class="number">03</span>
-						<span class="text">Unrivaled Group Fitness classes</span>
+						<span class="text">{{ "Unrivaled Group Fitness classes"|translate_text:request.GET.lang }}</span>
 					</div>
 				</div>
 				<div class="content-right">
-					<img src="{% static 'cms/assets/images/join-img.png' %}" alt="images">
+					<img src="{% static 'cms/assets/images/join-img.png' %}" alt="{{ 'Join Our Gym'|translate_text:request.GET.lang }}">
 				</div>
 			</div>
 		</div>
@@ -616,8 +623,8 @@
 	<section class="work-process">
 		<div class="container">
 			<div class="section-title">
-				<h4 class="subtitle"><span>WORK PROCESS</span></h4>
-				<h1 class="title">Fitness Made Simple</h1>
+				<h4 class="subtitle"><span>{{ "WORK PROCESS"|translate_text:request.GET.lang }}</span></h4>
+				<h1 class="title">{{ "Fitness Made Simple"|translate_text:request.GET.lang }}</h1>
 			</div>
 			<div class="row">
 				<div class="col-md-6 col-xl-3">
@@ -625,15 +632,15 @@
 						<div class="content-wrap">
 							<div class="image">
 								<div class="img-wrapper">
-									<img src="{% static 'cms/assets/images/process-img1.png' %}" alt="images">
+									<img src="{% static 'cms/assets/images/process-img1.png' %}" alt="{{ 'Workout Planning'|translate_text:request.GET.lang }}">
 								</div>
 								<div class="process-icon">
-									<img src="{% static 'cms/assets/images/icon-1.png' %}" alt="icon">
+									<img src="{% static 'cms/assets/images/icon-1.png' %}" alt="{{ 'Planning Icon'|translate_text:request.GET.lang }}">
 								</div>
 							</div>
 							<div class="content">
-								<h3 class="title">Workout Planning</h3>
-								<p class="description">Elevate your fitness level by combining strength</p>
+								<h3 class="title">{{ "Workout Planning"|translate_text:request.GET.lang }}</h3>
+								<p class="description">{{ "Elevate your fitness level by combining strength"|translate_text:request.GET.lang }}</p>
 							</div>
 						</div>
 						<div class="number">01</div>
@@ -644,15 +651,15 @@
 						<div class="content-wrap">
 							<div class="image">
 								<div class="img-wrapper">
-									<img src="{% static 'cms/assets/images/process-img2.png' %}" alt="images">
+									<img src="{% static 'cms/assets/images/process-img2.png' %}" alt="{{ 'Gym Movement'|translate_text:request.GET.lang }}">
 								</div>
 								<div class="process-icon">
-									<img src="{% static 'cms/assets/images/icon-2.png' %}" alt="icon">
+									<img src="{% static 'cms/assets/images/icon-2.png' %}" alt="{{ 'Movement Icon'|translate_text:request.GET.lang }}">
 								</div>
 							</div>
 							<div class="content">
-								<h3 class="title">Gym Movement</h3>
-								<p class="description">Elevate your fitness level by combining strength</p>
+								<h3 class="title">{{ "Gym Movement"|translate_text:request.GET.lang }}</h3>
+								<p class="description">{{ "Elevate your fitness level by combining strength"|translate_text:request.GET.lang }}</p>
 							</div>
 						</div>
 						<div class="number">02</div>
@@ -663,15 +670,15 @@
 						<div class="content-wrap">
 							<div class="image">
 								<div class="img-wrapper">
-									<img src="{% static 'cms/assets/images/process-img3.png' %}" alt="images">
+									<img src="{% static 'cms/assets/images/process-img3.png' %}" alt="{{ 'Fitness Practice'|translate_text:request.GET.lang }}">
 								</div>
 								<div class="process-icon">
-									<img src="{% static 'cms/assets/images/icon-3.png' %}" alt="icon">
+									<img src="{% static 'cms/assets/images/icon-3.png' %}" alt="{{ 'Practice Icon'|translate_text:request.GET.lang }}">
 								</div>
 							</div>
 							<div class="content">
-								<h3 class="title">Fitness Practice</h3>
-								<p class="description">Elevate your fitness level by combining strength</p>
+								<h3 class="title">{{ "Fitness Practice"|translate_text:request.GET.lang }}</h3>
+								<p class="description">{{ "Elevate your fitness level by combining strength"|translate_text:request.GET.lang }}</p>
 							</div>
 						</div>
 						<div class="number">03</div>
@@ -682,15 +689,15 @@
 						<div class="content-wrap">
 							<div class="image">
 								<div class="img-wrapper">
-									<img src="{% static 'cms/assets/images/process-img4.png' %}" alt="images">
+									<img src="{% static 'cms/assets/images/process-img4.png' %}" alt="{{ 'Achievement'|translate_text:request.GET.lang }}">
 								</div>
 								<div class="process-icon">
-									<img src="{% static 'cms/assets/images/icon-4.png' %}" alt="icon">
+									<img src="{% static 'cms/assets/images/icon-4.png' %}" alt="{{ 'Achievement Icon'|translate_text:request.GET.lang }}">
 								</div>
 							</div>
 							<div class="content">
-								<h3 class="title">Achievement</h3>
-								<p class="description">Elevate your fitness level by combining strength</p>
+								<h3 class="title">{{ "Achievement"|translate_text:request.GET.lang }}</h3>
+								<p class="description">{{ "Elevate your fitness level by combining strength"|translate_text:request.GET.lang }}</p>
 							</div>
 						</div>
 						<div class="number">04</div>
@@ -699,7 +706,7 @@
 			</div>
 		</div>
 		<div class="shape-img">
-			<img src="{% static 'cms/assets/images/work-line.png' %}" alt="shape">
+			<img src="{% static 'cms/assets/images/work-line.png' %}" alt="{{ 'Work Process Line'|translate_text:request.GET.lang }}">
 		</div>
 	</section>
 
@@ -709,76 +716,76 @@
 		<div class="container">
 			<div class="top">
 				<div class="section-title">
-					<h4 class="subtitle"><span>Team Member</span></h4>
-					<h1 class="title">Our Expert Trainers </h1>
+					<h4 class="subtitle"><span>{{ "Team Member"|translate_text:request.GET.lang }}</span></h4>
+					<h1 class="title">{{ "Our Expert Trainers"|translate_text:request.GET.lang }}</h1>
 				</div>
 				<div class="button">
-					<a href="#" class="btn">View Classes<i class="fa-solid fa-arrow-right"></i></a>
+					<a href="{% url 'cms:trainers' %}" class="btn">{{ "View Trainers"|translate_text:request.GET.lang }}<i class="fa-solid fa-arrow-right"></i></a>
 				</div>
 			</div>
 			<div class="row">
 				<div class="team-member">
-				<div class="member-box">
-					<div class="images">
-						<img src="{% static 'cms/assets/images/member-1.png' %}" alt="images">
+					<div class="member-box">
+						<div class="images">
+							<img src="{% static 'cms/assets/images/member-1.png' %}" alt="{{ 'Harvey Jones - Body Building Trainer'|translate_text:request.GET.lang }}">
+						</div>
+						<div class="bio">
+							<h4 class="name">{{ "Harvey Jones"|translate_text:request.GET.lang }}</h4>
+							<p>{{ "Body Building"|translate_text:request.GET.lang }}</p>
+							<ul class="social-icons">
+								<li><a href="#"><i class="fa-brands fa-facebook-f"></i></a></li>
+								<li><a href="#"><i class="fa-brands fa-x-twitter"></i></a></li>
+								<li><a href="#"><i class="fa-brands fa-linkedin-in"></i></a></li>
+								<li><a href="#"><i class="fa-brands fa-pinterest-p"></i></a></li>
+							</ul>
+						</div>
 					</div>
-					<div class="bio">
-						<h4 class="name">Harvey jones</h4>
-						<p>Body Building</p>
-						<ul class="social-icons">
-							<li><a href="#"><i class="fa-brands fa-facebook-f"></i></a></li>
-							<li><a href="#"><i class="fa-brands fa-x-twitter"></i></a></li>
-							<li><a href="#"><i class="fa-brands fa-linkedin-in"></i></a></li>
-							<li><a href="#"><i class="fa-brands fa-pinterest-p"></i></a></li>
-						</ul>
+					<div class="member-box">
+						<div class="images">
+							<img src="{% static 'cms/assets/images/member-2.png' %}" alt="{{ 'David Harris - Strength Trainer'|translate_text:request.GET.lang }}">
+						</div>
+						<div class="bio">
+							<h4 class="name">{{ "David Harris"|translate_text:request.GET.lang }}</h4>
+							<p>{{ "Strength Trainer"|translate_text:request.GET.lang }}</p>
+							<ul class="social-icons">
+								<li><a href="#"><i class="fa-brands fa-facebook-f"></i></a></li>
+								<li><a href="#"><i class="fa-brands fa-x-twitter"></i></a></li>
+								<li><a href="#"><i class="fa-brands fa-linkedin-in"></i></a></li>
+								<li><a href="#"><i class="fa-brands fa-pinterest-p"></i></a></li>
+							</ul>
+						</div>
+					</div>
+					<div class="member-box">
+						<div class="images">
+							<img src="{% static 'cms/assets/images/member-3.png' %}" alt="{{ 'Harlien Puth - Strength Trainer'|translate_text:request.GET.lang }}">
+						</div>
+						<div class="bio">
+							<h4 class="name">{{ "Harlien Puth"|translate_text:request.GET.lang }}</h4>
+							<p>{{ "Strength Trainer"|translate_text:request.GET.lang }}</p>
+							<ul class="social-icons">
+								<li><a href="#"><i class="fa-brands fa-facebook-f"></i></a></li>
+								<li><a href="#"><i class="fa-brands fa-x-twitter"></i></a></li>
+								<li><a href="#"><i class="fa-brands fa-linkedin-in"></i></a></li>
+								<li><a href="#"><i class="fa-brands fa-pinterest-p"></i></a></li>
+							</ul>
+						</div>
+					</div>
+					<div class="member-box">
+						<div class="images">
+							<img src="{% static 'cms/assets/images/member-4.png' %}" alt="{{ 'Tristin Chinez - Yoga Coach'|translate_text:request.GET.lang }}">
+						</div>
+						<div class="bio">
+							<h4 class="name">{{ "Tristin Chinez"|translate_text:request.GET.lang }}</h4>
+							<p>{{ "Yoga Coach"|translate_text:request.GET.lang }}</p>
+							<ul class="social-icons">
+								<li><a href="#"><i class="fa-brands fa-facebook-f"></i></a></li>
+								<li><a href="#"><i class="fa-brands fa-x-twitter"></i></a></li>
+								<li><a href="#"><i class="fa-brands fa-linkedin-in"></i></a></li>
+								<li><a href="#"><i class="fa-brands fa-pinterest-p"></i></a></li>
+							</ul>
+						</div>
 					</div>
 				</div>
-				<div class="member-box">
-					<div class="images">
-						<img src="{% static 'cms/assets/images/member-2.png' %}" alt="images">
-					</div>
-					<div class="bio">
-						<h4 class="name">David Harris</h4>
-						<p>Strength Trainer</p>
-						<ul class="social-icons">
-							<li><a href="#"><i class="fa-brands fa-facebook-f"></i></a></li>
-							<li><a href="#"><i class="fa-brands fa-x-twitter"></i></a></li>
-							<li><a href="#"><i class="fa-brands fa-linkedin-in"></i></a></li>
-							<li><a href="#"><i class="fa-brands fa-pinterest-p"></i></a></li>
-						</ul>
-					</div>
-				</div>
-				<div class="member-box">
-					<div class="images">
-						<img src="{% static 'cms/assets/images/member-3.png' %}" alt="images">
-					</div>
-					<div class="bio">
-						<h4 class="name">Harlien puth</h4>
-						<p>Strength Trainer</p>
-						<ul class="social-icons">
-							<li><a href="#"><i class="fa-brands fa-facebook-f"></i></a></li>
-							<li><a href="#"><i class="fa-brands fa-x-twitter"></i></a></li>
-							<li><a href="#"><i class="fa-brands fa-linkedin-in"></i></a></li>
-							<li><a href="#"><i class="fa-brands fa-pinterest-p"></i></a></li>
-						</ul>
-					</div>
-				</div>
-				<div class="member-box">
-					<div class="images">
-						<img src="{% static 'cms/assets/images/member-4.png' %}" alt="images">
-					</div>
-					<div class="bio">
-						<h4 class="name">Tristin Chinez</h4>
-						<p>Yoga Coach</p>
-						<ul class="social-icons">
-							<li><a href="#"><i class="fa-brands fa-facebook-f"></i></a></li>
-							<li><a href="#"><i class="fa-brands fa-x-twitter"></i></a></li>
-							<li><a href="#"><i class="fa-brands fa-linkedin-in"></i></a></li>
-							<li><a href="#"><i class="fa-brands fa-pinterest-p"></i></a></li>
-						</ul>
-					</div>
-				</div>
-			</div>
 			</div>
 		</div>
 	</section>
@@ -790,15 +797,15 @@
 	<section class="testimonial-section">
 		<div class="container">
 			<div class="section-title">
-				<h4 class="subtitle"><span>Testimonial</span></h4>
-				<h1 class="title">What Our Client Say?</h1>
+				<h4 class="subtitle"><span>{{ "Testimonial"|translate_text:request.GET.lang }}</span></h4>
+				<h1 class="title">{{ "What Our Clients Say"|translate_text:request.GET.lang }}</h1>
 			</div>
 			<div class="testimonial-carousel owl-carousel">
 				<div class="testimonial-content">
-					<h3 class="text">Customers rave about the durability and performance of our electric equipment. Many highlight the exceptional build quality, energy efficiency, and user-friendly design</h3>
+					<h3 class="text">{{ "Customers rave about the durability and performance of our electric equipment. Many highlight the exceptional build quality, energy efficiency, and user-friendly design"|translate_text:request.GET.lang }}</h3>
 					<div class="profile">
 						<div class="profile-img">
-							<img src="{% static 'cms/assets/images/testimonial-man.png' %}" alt="images">
+							<img src="{% static 'cms/assets/images/testimonial-man.png' %}" alt="{{ 'Yousuf Kibriya - Business Man'|translate_text:request.GET.lang }}">
 						</div>
 						<div class="address">
 							<ul class="star-icon">
@@ -808,16 +815,16 @@
 								<li><i class="fa-solid fa-star"></i></li>
 								<li><i class="fa-solid fa-star"></i></li>
 							</ul>
-							<h4 class="name">Yousuf Kibriya</h4>
-							<p>Business Man</p>
+							<h4 class="name">{{ "Yousuf Kibriya"|translate_text:request.GET.lang }}</h4>
+							<p>{{ "Business Man"|translate_text:request.GET.lang }}</p>
 						</div>
 					</div>
 				</div>
 				<div class="testimonial-content">
-					<h3 class="text">Customers rave about the durability and performance of our electric equipment. Many highlight the exceptional build quality, energy efficiency, and user-friendly design</h3>
+					<h3 class="text">{{ "The trainers are incredibly knowledgeable and supportive. The facilities are top-notch, and the community is welcoming. Best gym experience ever!"|translate_text:request.GET.lang }}</h3>
 					<div class="profile">
 						<div class="profile-img">
-							<img src="{% static 'cms/assets/images/testimonial-man.png' %}" alt="images">
+							<img src="{% static 'cms/assets/images/testimonial-woman.png' %}" alt="{{ 'Sarah Johnson - Fitness Enthusiast'|translate_text:request.GET.lang }}">
 						</div>
 						<div class="address">
 							<ul class="star-icon">
@@ -827,8 +834,8 @@
 								<li><i class="fa-solid fa-star"></i></li>
 								<li><i class="fa-solid fa-star"></i></li>
 							</ul>
-							<h4 class="name">Yousuf Kibriya</h4>
-							<p>Business Man</p>
+							<h4 class="name">{{ "Sarah Johnson"|translate_text:request.GET.lang }}</h4>
+							<p>{{ "Fitness Enthusiast"|translate_text:request.GET.lang }}</p>
 						</div>
 					</div>
 				</div>
@@ -844,74 +851,74 @@
 		<div class="container">
 			<div class="top">
 				<div class="section-title">
-					<h4 class="subtitle"><span>Pricing Plan</span></h4>
-					<h1 class="title">Choose Our Package</h1>
+					<h4 class="subtitle"><span>{{ "Pricing Plan"|translate_text:request.GET.lang }}</span></h4>
+					<h1 class="title">{{ "Choose Our Package"|translate_text:request.GET.lang }}</h1>
 				</div>
 				<div class="button">
-					<a href="#" class="btn">View Pricing<i class="fa-solid fa-arrow-right"></i></a>
+					<a href="{% url 'cms:pricing' %}" class="btn">{{ "View Pricing"|translate_text:request.GET.lang }}<i class="fa-solid fa-arrow-right"></i></a>
 				</div>
 			</div>
 			<div class="row">
 				<div class="col-md-6 col-lg-6 col-xl-4">
 					<div class="package-box">
 						<div class="box-head">
-							<h5 class="price-title">Silver Package</h5>
-							<span class="price">$ 59.00</span>
-							<span class="validity">/Per Month</span>
+							<h5 class="price-title">{{ "Basic Package"|translate_text:request.GET.lang }}</h5>
+							<span class="price">$ 39.00</span>
+							<span class="validity">{{ "/Per Month"|translate_text:request.GET.lang }}</span>
 						</div>
 						<div class="box-body">
 							<ul>
-								<li><i class="fa-regular fa-circle-check"></i>30 Days Trial Features</li>
-								<li><i class="fa-regular fa-circle-check"></i>Unlimited Features</li>
-								<li><i class="fa-regular fa-circle-check"></i>Multi-Language Content</li>
-								<li><i class="fa-regular fa-circle-xmark"></i>Data backup and recovery</li>
-								<li><i class="fa-regular fa-circle-xmark"></i>Synced To Cloud Database</li>
+								<li><i class="fa-regular fa-circle-check"></i>{{ "Access to basic equipment"|translate_text:request.GET.lang }}</li>
+								<li><i class="fa-regular fa-circle-check"></i>{{ "Group classes"|translate_text:request.GET.lang }}</li>
+								<li><i class="fa-regular fa-circle-check"></i>{{ "Locker room access"|translate_text:request.GET.lang }}</li>
+								<li><i class="fa-regular fa-circle-xmark"></i>{{ "Personal training"|translate_text:request.GET.lang }}</li>
+								<li><i class="fa-regular fa-circle-xmark"></i>{{ "Premium classes"|translate_text:request.GET.lang }}</li>
 							</ul>
 						</div>
 						<div class="button">
-							<a href="#" class="btn">Purchase Now<i class="fa-solid fa-arrow-right"></i></a>
+							<a href="{% url 'cms:pricing' %}" class="btn">{{ "Purchase Now"|translate_text:request.GET.lang }}<i class="fa-solid fa-arrow-right"></i></a>
 						</div>
 					</div>
 				</div>
 				<div class="col-md-6 col-lg-6 col-xl-4">
 					<div class="package-box">
 						<div class="box-head">
-							<h5 class="price-title">Silver Package</h5>
+							<h5 class="price-title">{{ "Premium Package"|translate_text:request.GET.lang }}</h5>
 							<span class="price">$ 59.00</span>
-							<span class="validity">/Per Month</span>
+							<span class="validity">{{ "/Per Month"|translate_text:request.GET.lang }}</span>
 						</div>
 						<div class="box-body">
 							<ul>
-								<li><i class="fa-regular fa-circle-check"></i>30 Days Trial Features</li>
-								<li><i class="fa-regular fa-circle-check"></i>Unlimited Features</li>
-								<li><i class="fa-regular fa-circle-check"></i>Multi-Language Content</li>
-								<li><i class="fa-regular fa-circle-check"></i>Data backup and recovery</li>
-								<li><i class="fa-regular fa-circle-xmark"></i>Synced To Cloud Database</li>
+								<li><i class="fa-regular fa-circle-check"></i>{{ "All basic features"|translate_text:request.GET.lang }}</li>
+								<li><i class="fa-regular fa-circle-check"></i>{{ "Personal training sessions"|translate_text:request.GET.lang }}</li>
+								<li><i class="fa-regular fa-circle-check"></i>{{ "Premium classes"|translate_text:request.GET.lang }}</li>
+								<li><i class="fa-regular fa-circle-check"></i>{{ "Sauna access"|translate_text:request.GET.lang }}</li>
+								<li><i class="fa-regular fa-circle-xmark"></i>{{ "24/7 access"|translate_text:request.GET.lang }}</li>
 							</ul>
 						</div>
 						<div class="button">
-							<a href="#" class="btn active">Purchase Now<i class="fa-solid fa-arrow-right"></i></a>
+							<a href="{% url 'cms:pricing' %}" class="btn active">{{ "Purchase Now"|translate_text:request.GET.lang }}<i class="fa-solid fa-arrow-right"></i></a>
 						</div>
 					</div>
 				</div>
 				<div class="col-md-6 col-lg-6 col-xl-4">
 					<div class="package-box">
 						<div class="box-head">
-							<h5 class="price-title">Silver Package</h5>
-							<span class="price">$ 59.00</span>
-							<span class="validity">/Per Month</span>
+							<h5 class="price-title">{{ "Elite Package"|translate_text:request.GET.lang }}</h5>
+							<span class="price">$ 89.00</span>
+							<span class="validity">{{ "/Per Month"|translate_text:request.GET.lang }}</span>
 						</div>
 						<div class="box-body">
 							<ul>
-								<li><i class="fa-regular fa-circle-check"></i>30 Days Trial Features</li>
-								<li><i class="fa-regular fa-circle-check"></i>Unlimited Features</li>
-								<li><i class="fa-regular fa-circle-check"></i>Multi-Language Content</li>
-								<li><i class="fa-regular fa-circle-check"></i>Data backup and recovery</li>
-								<li><i class="fa-regular fa-circle-check"></i>Synced To Cloud Database</li>
+								<li><i class="fa-regular fa-circle-check"></i>{{ "All premium features"|translate_text:request.GET.lang }}</li>
+								<li><i class="fa-regular fa-circle-check"></i>{{ "24/7 access"|translate_text:request.GET.lang }}</li>
+								<li><i class="fa-regular fa-circle-check"></i>{{ "Unlimited personal training"|translate_text:request.GET.lang }}</li>
+								<li><i class="fa-regular fa-circle-check"></i>{{ "Nutrition consultation"|translate_text:request.GET.lang }}</li>
+								<li><i class="fa-regular fa-circle-check"></i>{{ "Priority booking"|translate_text:request.GET.lang }}</li>
 							</ul>
 						</div>
 						<div class="button">
-							<a href="#" class="btn">Purchase Now<i class="fa-solid fa-arrow-right"></i></a>
+							<a href="{% url 'cms:pricing' %}" class="btn">{{ "Purchase Now"|translate_text:request.GET.lang }}<i class="fa-solid fa-arrow-right"></i></a>
 						</div>
 					</div>
 				</div>
@@ -926,41 +933,24 @@
 	<section class="brand-section">
 		<div class="brand-carousel owl-carousel">
 			<div class="brand-item">
-				<img src="{% static 'cms/assets/images/brand-1.png' %}" alt="images">
+				<img src="{% static 'cms/assets/images/brand-1.png' %}" alt="{{ "Partner Brand 1"|translate_text:request.GET.lang }}">
 			</div>
 			<div class="brand-item">
-				<img src="{% static 'cms/assets/images/brand-2.png' %}" alt="images">
+				<img src="{% static 'cms/assets/images/brand-2.png' %}" alt="{{ "Partner Brand 2"|translate_text:request.GET.lang }}">
 			</div>
 			<div class="brand-item">
-				<img src="{% static 'cms/assets/images/brand-3.png' %}" alt="images">
+				<img src="{% static 'cms/assets/images/brand-3.png' %}" alt="{{ "Partner Brand 3"|translate_text:request.GET.lang }}">
 			</div>
 			<div class="brand-item">
-				<img src="{% static 'cms/assets/images/brand-4.png' %}" alt="images">
+				<img src="{% static 'cms/assets/images/brand-4.png' %}" alt="{{ "Partner Brand 4"|translate_text:request.GET.lang }}">
 			</div>
 			<div class="brand-item">
-				<img src="{% static 'cms/assets/images/brand-5.png' %}" alt="images">
+				<img src="{% static 'cms/assets/images/brand-5.png' %}" alt="{{ "Partner Brand 5"|translate_text:request.GET.lang }}">
 			</div>
 			<div class="brand-item">
-				<img src="{% static 'cms/assets/images/brand-6.png' %}" alt="images">
+				<img src="{% static 'cms/assets/images/brand-6.png' %}" alt="{{ "Partner Brand 6"|translate_text:request.GET.lang }}">
 			</div>
-			<div class="brand-item">
-				<img src="{% static 'cms/assets/images/brand-1.png' %}" alt="images">
-			</div>
-			<div class="brand-item">
-				<img src="{% static 'cms/assets/images/brand-2.png' %}" alt="images">
-			</div>
-			<div class="brand-item">
-				<img src="{% static 'cms/assets/images/brand-3.png' %}" alt="images">
-			</div>
-			<div class="brand-item">
-				<img src="{% static 'cms/assets/images/brand-4.png' %}" alt="images">
-			</div>
-			<div class="brand-item">
-				<img src="{% static 'cms/assets/images/brand-5.png' %}" alt="images">
-			</div>
-			<div class="brand-item">
-				<img src="{% static 'cms/assets/images/brand-6.png' %}" alt="images">
-			</div>
+
 		</div>
 	</section>
 
@@ -971,69 +961,69 @@
 	<section class="blog-section">
 		<div class="container">
 			<div class="section-title">
-				<h4 class="subtitle"><span>LETEST BLOG</span></h4>
-				<h1 class="title">Latest News & Feeds</h1>
+				<h4 class="subtitle"><span>{{ "LATEST BLOG"|translate_text:request.GET.lang }}</span></h4>
+				<h1 class="title">{{ "Latest News & Feeds"|translate_text:request.GET.lang }}</h1>
 			</div>
 			<div class="blog-box">
 				<div class="blog-left">
 					<div class="blog-subtitle">
-						<span>Gymix</span>
+						<span>{{ "Gymix"|translate_text:request.GET.lang }}</span>
 						<span class="separetor"></span>
-						<span>February 08, 2025</span>
+						<span>{{ "February 08, 2025"|translate_text:request.GET.lang }}</span>
 					</div>
 					<h4 class="blog-heading">
-						<a href="#">How to Create a Workout Routine You’ll Actually Stick To</a>
+						<a href="{% url 'cms:blog_details' %}">{{ "How to Create a Workout Routine You'll Actually Stick To"|translate_text:request.GET.lang }}</a>
 					</h4>
-					<p>Build strength, endurance, and fitness with dynamic workouts and expert guidance for a balanced, powerful physique.</p>
+					<p>{{ "Learn the secrets to building a sustainable workout routine that fits your lifestyle and helps you achieve your fitness goals."|translate_text:request.GET.lang }}</p>
 					<div class="button">
-						<a href="#" class="btn">Read More<i class="fa-solid fa-arrow-right"></i></a>
+						<a href="{% url 'cms:blog_details' %}" class="btn">{{ "Read More"|translate_text:request.GET.lang }}<i class="fa-solid fa-arrow-right"></i></a>
 					</div>
 				</div>
 				<div class="blog-right">
 					<div class="image">
-						<img src="{% static 'cms/assets/images/blog-3.jpg' %}" alt="image">
-					</div>
-				</div>
-			</div>
-			<div class="blog-box">
-				<div class="blog-left">
-					<div class="blog-subtitle">
-						<span>Gymix</span>
-						<span class="separetor"></span>
-						<span>February 08, 2025</span>
-					</div>
-					<h4 class="blog-heading">
-						<a href="#">The Benefits of Strength Training for Every Body Type</a>
-					</h4>
-					<p>Build strength, endurance, and fitness with dynamic workouts and expert guidance for a balanced, powerful physique.</p>
-					<div class="button">
-						<a href="#" class="btn">Read More<i class="fa-solid fa-arrow-right"></i></a>
-					</div>
-				</div>
-				<div class="blog-right">
-					<div class="image">
-						<img src="{% static 'cms/assets/images/blog-2.jpg' %}" alt="image">
+						<img src="{% static 'cms/assets/images/blog-3.jpg' %}" alt="{{ 'Workout Routine Article'|translate_text:request.GET.lang }}">
 					</div>
 				</div>
 			</div>
 			<div class="blog-box">
 				<div class="blog-left">
 					<div class="blog-subtitle">
-						<span>Gymix</span>
+						<span>{{ "Gymix"|translate_text:request.GET.lang }}</span>
 						<span class="separetor"></span>
-						<span>February 08, 2025</span>
+						<span>{{ "February 08, 2025"|translate_text:request.GET.lang }}</span>
 					</div>
 					<h4 class="blog-heading">
-						<a href="#">Nutrition 101 The Perfect Pair to Your Workout Plan</a>
+						<a href="{% url 'cms:blog_details' %}">{{ "The Benefits of Strength Training for Every Body Type"|translate_text:request.GET.lang }}</a>
 					</h4>
-					<p>Build strength, endurance, and fitness with dynamic workouts and expert guidance for a balanced, powerful physique.</p>
+					<p>{{ "Discover how strength training can benefit everyone, regardless of age, gender, or fitness level, and learn how to get started safely."|translate_text:request.GET.lang }}</p>
 					<div class="button">
-						<a href="#" class="btn">Read More<i class="fa-solid fa-arrow-right"></i></a>
+						<a href="{% url 'cms:blog_details' %}" class="btn">{{ "Read More"|translate_text:request.GET.lang }}<i class="fa-solid fa-arrow-right"></i></a>
 					</div>
 				</div>
 				<div class="blog-right">
 					<div class="image">
-						<img src="{% static 'cms/assets/images/blog-1.jpg' %}" alt="image">
+						<img src="{% static 'cms/assets/images/blog-2.jpg' %}" alt="{{ 'Strength Training Article'|translate_text:request.GET.lang }}">
+					</div>
+				</div>
+			</div>
+			<div class="blog-box">
+				<div class="blog-left">
+					<div class="blog-subtitle">
+						<span>{{ "Gymix"|translate_text:request.GET.lang }}</span>
+						<span class="separetor"></span>
+						<span>{{ "February 08, 2025"|translate_text:request.GET.lang }}</span>
+					</div>
+					<h4 class="blog-heading">
+						<a href="{% url 'cms:blog_details' %}">{{ "Nutrition 101: The Perfect Pair to Your Workout Plan"|translate_text:request.GET.lang }}</a>
+					</h4>
+					<p>{{ "Understand the importance of proper nutrition in achieving your fitness goals and learn how to create a balanced diet plan."|translate_text:request.GET.lang }}</p>
+					<div class="button">
+						<a href="{% url 'cms:blog_details' %}" class="btn">{{ "Read More"|translate_text:request.GET.lang }}<i class="fa-solid fa-arrow-right"></i></a>
+					</div>
+				</div>
+				<div class="blog-right">
+					<div class="image">
+						<img src="{% static 'cms/assets/images/blog-1.jpg' %}" alt="{{ 'Nutrition Article'|translate_text:request.GET.lang }}">
 					</div>
 				</div>
 			</div>
@@ -1046,9 +1036,9 @@
 	<section class="location-map-section">
 		<div class="container">
 			<div class="section-title">
-				<h5><span></span>Find Us</h5>
-				<h2 class="heading">Visit Our Gym</h2>
-				<p>Located in the heart of San Francisco, easily accessible by public transport and with ample parking</p>
+				<h5><span></span>{{ "Find Us"|translate_text:request.GET.lang }}</h5>
+				<h2 class="heading">{{ "Visit Our Gym"|translate_text:request.GET.lang }}</h2>
+				<p>{{ "Located in the heart of San Francisco, easily accessible by public transport and with ample parking"|translate_text:request.GET.lang }}</p>
 			</div>
 			<div class="map-container">
 				<div class="map-wrapper">
@@ -1068,8 +1058,8 @@
 							<i class="fa-solid fa-location-dot"></i>
 						</div>
 						<div class="content">
-							<h4>Our Location</h4>
-							<p>293 Harrison St, San Francisco, CA 94103, United States</p>
+							<h4>{{ "Our Location"|translate_text:request.GET.lang }}</h4>
+							<p>{{ "293 Harrison St, San Francisco, CA 94103, United States"|translate_text:request.GET.lang }}</p>
 						</div>
 					</div>
 					<div class="info-box">
@@ -1077,8 +1067,8 @@
 							<i class="fa-solid fa-clock"></i>
 						</div>
 						<div class="content">
-							<h4>Opening Hours</h4>
-							<p>Monday - Friday: 6:00 AM - 10:00 PM<br>Saturday - Sunday: 8:00 AM - 8:00 PM</p>
+							<h4>{{ "Opening Hours"|translate_text:request.GET.lang }}</h4>
+							<p>{{ "Monday - Friday: 6:00 AM - 10:00 PM"|translate_text:request.GET.lang }}<br>{{ "Saturday - Sunday: 8:00 AM - 8:00 PM"|translate_text:request.GET.lang }}</p>
 						</div>
 					</div>
 				</div>
@@ -1093,10 +1083,10 @@
 		<div class="container">
 			<div class="footer-content">
 				<div class="discription">
-					<img src="{% static 'cms/assets/images/site-logo.png' %}" alt="images">
-					<p>Achieve your health goals with expert trainers, state-of-the-art equipment, and a supportive community</p>
+					<img src="{% static 'cms/assets/images/site-logo.png' %}" alt="{{ "FitCore Logo"|translate_text:request.GET.lang }}">
+					<p>{{ "We are dedicated to helping you achieve your fitness goals through expert guidance and support."|translate_text:request.GET.lang }}</p>
 					<ul>
-						<li class="title">Follow Us:</li>
+						<li class="title">{{ "Follow Us:"|translate_text:request.GET.lang }}</li>
 						<li><a href="#"><i class="fa-brands fa-facebook-f"></i></a></li>
 						<li><a href="#"><i class="fa-brands fa-x-twitter"></i></a></li>
 						<li><a href="#"><i class="fa-brands fa-youtube"></i></a></li>
@@ -1104,26 +1094,28 @@
 					</ul>
 				</div>
 				<div class="contact">
-					<h3>Contact</h3>
+					<h3>{{ "Contact"|translate_text:request.GET.lang }}</h3>
 					<ul>
-						<li><a href="mailto:fitcoredemo@example.com"><i class="fa-solid fa-envelope"></i>fitcoredemo@example.com</a></li>
-						<li><a href="tel:56712345678901"><i class="fa-solid fa-phone"></i>+ (567) 1234-567-8901</a></li>
-						<li><i class="fa-solid fa-location-dot"></i>293 Harrison St, San Francisco, CA 94103, United States</li>
+						<li><a href="mailto:fitcoredemo@example.com"><i class="fa-solid fa-envelope"></i>{{ "fitcoredemo@example.com"|translate_text:request.GET.lang }}</a></li>
+						<li><a href="tel:56712345678901"><i class="fa-solid fa-phone"></i>{{ "+ (567) 1234-567-8901"|translate_text:request.GET.lang }}</a></li>
+						<li><i class="fa-solid fa-location-dot"></i>{{ "293 Harrison St, San Francisco, CA 94103, United States"|translate_text:request.GET.lang }}</li>
 					</ul>
 				</div>
 				<div class="letter">
-					<h3>Newsletter</h3>
-					<p>Subscribe today and unlock 20% off your first class package.</p>
+					<h3>{{ "Newsletter"|translate_text:request.GET.lang }}</h3>
+					<p>{{ "Subscribe to our newsletter for the latest updates and offers."|translate_text:request.GET.lang }}</p>
 					<form action="{% url 'cms:newsletter_subscribe' %}" method="post">
 						{% csrf_token %}
 						<div class="mail">
-							<input type="email" name="email" placeholder="Enter your Email" required>
+							<input type="email" name="email" placeholder="{{ "Enter your Email"|translate_text:request.GET.lang }}" required>
 							<button type="submit"><i class="fa-solid fa-paper-plane"></i></button>
 						</div>
 					</form>
 				</div>
 			</div>
-			<p class="end-text">All Right Reserved FitCore 2025</p>
+			<div class="copyright">
+				<p>{{ "© 2024 FitCore. All Rights Reserved."|translate_text:request.GET.lang }}</p>
+			</div>
 		</div>
 	</footer>
 
@@ -1135,7 +1127,7 @@
 		<button class="search-close"><i class="fa-solid fa-xmark"></i></button>
 		<form method="get" action="{% url 'cms:search' %}">
 			<div class="form-group">
-				<input type="search" name="search-field" value="" placeholder="Search Here" required="">
+				<input type="search" name="search-field" value="" placeholder="{{ "Search Here"|translate_text:request.GET.lang }}" required="">
 				<button type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
 			</div>
 		</form>
@@ -1147,6 +1139,16 @@
 	<script src="{% static 'cms/assets/js/owl.carousel.min.js' %}"></script>
 	<script src="{% static 'cms/assets/js/venobox.min.js' %}"></script>
 	<script src="{% static 'cms/assets/js/script.js' %}"></script>
+	<script src="{% static 'translation/js/translator.js' %}"></script>
+	<script>
+		document.addEventListener('DOMContentLoaded', function() {
+			initTranslator({
+				targetLanguage: '{{ request.GET.lang|default:"en" }}',
+				sourceLanguage: 'en',
+				buttonPosition: 'top-right'
+			});
+		});
+	</script>
 	
 </body>
 </html>

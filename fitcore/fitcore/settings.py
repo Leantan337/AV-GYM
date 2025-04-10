@@ -55,7 +55,7 @@ INSTALLED_APPS = [
     'taggit',
     
     'cms',
-    'blog',
+    'blog.apps.BlogConfig',  # Use the custom config for blog
     'translation',
 ]
 

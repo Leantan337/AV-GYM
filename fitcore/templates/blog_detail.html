@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ page.title }} - Preview - FitCore</title>
+    <title>{{ page.title }} - {{ "Preview"|translate_text:request.GET.lang }} - {{ "FitCore"|translate_text:request.GET.lang }}</title>
 
     <link rel="icon" type="image/x-icon" href="{% static 'cms/assets/images/favicon.png' %}">
 
@@ -58,7 +58,7 @@
 <body>
     <!-- Preview Banner -->
     <div class="preview-banner">
-        PREVIEW MODE - This is how your blog post will appear when published
+        {{ "PREVIEW MODE - This is how your blog post will appear when published"|translate_text:request.GET.lang }}
     </div>
 
     <!-- Start Breadcrumb -->
@@ -67,8 +67,8 @@
             <h1 class="heading">{{ page.title }}</h1>
             <div class="contact-box">
                 <ul>
-                    <li><a href="{% url 'cms:home' %}">Home</a></li>
-                    <li><a href="{% url 'cms:blog' %}">Blog</a></li>
+                    <li><a href="{% url 'cms:home' %}">{{ "Home"|translate_text:request.GET.lang }}</a></li>
+                    <li><a href="{% url 'cms:blog' %}">{{ "Blog"|translate_text:request.GET.lang }}</a></li>
                 </ul>
                 <span><i class="fa-solid fa-chevron-right"></i></span>
                 <span>{{ page.title }}</span>
@@ -94,7 +94,7 @@
                         <div class="content-box">
                             <div class="meta">
                                 <span><i class="fa-solid fa-calendar-days"></i>{{ page.date|date:"F d, Y" }}</span>
-                                <span><i class="fa-solid fa-user"></i>Admin</span>
+                                <span><i class="fa-solid fa-user"></i>{{ "Admin"|translate_text:request.GET.lang }}</span>
                                 <span class="category">
                                     <i class="fa-solid fa-tag"></i>
                                     {% for category in page.categories.all %}
@@ -110,7 +110,7 @@
                             <!-- Categories Section -->
                             {% if page.categories.all %}
                             <div class="category-badges">
-                                <h4>Categories:</h4>
+                                <h4>{{ "Categories:"|translate_text:request.GET.lang }}</h4>
                                 {% for category in page.categories.all %}
                                 <span class="category-badge">{{ category.name }}</span>
                                 {% endfor %}
@@ -122,9 +122,9 @@
                 <div class="col-lg-4">
                     <div class="right-content">
                         <div class="search-box">
-                            <h4 class="title">Search</h4>
+                            <h4 class="title">{{ "Search"|translate_text:request.GET.lang }}</h4>
                             <form action="{% url 'cms:search' %}" method="get">
-                                <input type="search" name="search-field" placeholder="Search..">
+                                <input type="search" name="search-field" placeholder="{{ 'Search..'|translate_text:request.GET.lang }}">
                                 <button type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
                             </form>
                         </div>
@@ -133,12 +133,12 @@
                     <!-- Categories Sidebar -->
                     <div class="right-content">
                         <div class="categories-box">
-                            <h4 class="title">Categories</h4>
+                            <h4 class="title">{{ "Categories"|translate_text:request.GET.lang }}</h4>
                             <ul>
                                 {% for category in all_categories %}
                                 <li><a href="{% url 'cms:blog' %}?category={{ category.slug }}">{{ category.name }}</a></li>
                                 {% empty %}
-                                <li>No categories defined</li>
+                                <li>{{ "No categories defined"|translate_text:request.GET.lang }}</li>
                                 {% endfor %}
                             </ul>
                         </div>
@@ -155,9 +155,9 @@
             <div class="footer-content">
                 <div class="discription">
                     <img src="{% static 'cms/assets/images/site-logo.png' %}" alt="images">
-                    <p>Achieve your health goals with expert trainers, state-of-the-art equipment, and a supportive community</p>
+                    <p>{{ "Achieve your health goals with expert trainers, state-of-the-art equipment, and a supportive community"|translate_text:request.GET.lang }}</p>
                     <ul>
-                        <li class="title">Follow Us:</li>
+                        <li class="title">{{ "Follow Us:"|translate_text:request.GET.lang }}</li>
                         <li><a href="#"><i class="fa-brands fa-facebook-f"></i></a></li>
                         <li><a href="#"><i class="fa-brands fa-x-twitter"></i></a></li>
                         <li><a href="#"><i class="fa-brands fa-youtube"></i></a></li>
@@ -165,7 +165,7 @@
                     </ul>
                 </div>
                 <div class="contact">
-                    <h3>Contact</h3>
+                    <h3>{{ "Contact"|translate_text:request.GET.lang }}</h3>
                     <ul>
                         <li><a href="mailto:fitcoredemo@example.com"><i class="fa-solid fa-envelope"></i>fitcoredemo@example.com</a></li>
                         <li><a href="tel:56712345678901"><i class="fa-solid fa-phone"></i>+ (567) 1234-567-8901</a></li>
@@ -173,18 +173,18 @@
                     </ul>
                 </div>
                 <div class="letter">
-                    <h3>Newsletter</h3>
-                    <p>Subscribe today and unlock 20% off your first class package.</p>
+                    <h3>{{ "Newsletter"|translate_text:request.GET.lang }}</h3>
+                    <p>{{ "Subscribe today and unlock 20% off your first class package."|translate_text:request.GET.lang }}</p>
                     <form action="{% url 'cms:newsletter_subscribe' %}" method="post">
                         {% csrf_token %}
                         <div class="mail">
-                            <input type="email" name="email" placeholder="Enter your Email" required>
+                            <input type="email" name="email" placeholder="{{ 'Enter your Email'|translate_text:request.GET.lang }}" required>
                             <button type="submit"><i class="fa-solid fa-paper-plane"></i></button>
                         </div>
                     </form>
                 </div>
             </div>
-            <p class="end-text">All Right Reserved FitCore 2025</p>
+            <p class="end-text">{{ "All Right Reserved FitCore 2025"|translate_text:request.GET.lang }}</p>
         </div>
     </footer>
     <!-- End Footer Section -->
@@ -194,7 +194,7 @@
         <button class="search-close"><i class="fa-solid fa-xmark"></i></button>
         <form method="get" action="{% url 'cms:search' %}">
             <div class="form-group">
-                <input type="search" name="search-field" value="" placeholder="Search Here" required="">
+                <input type="search" name="search-field" value="" placeholder="{{ 'Search Here'|translate_text:request.GET.lang }}" required="">
                 <button type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
             </div>
         </form>

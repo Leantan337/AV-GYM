@@ -1,45 +1,238 @@
-{% extends "base.html" %}
-{% load wagtailcore_tags %}
+{% load static wagtailcore_tags wagtailimages_tags translation_tags %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>{{ "Search Results"|translate_text:request.GET.lang }}</title>
 
-{% block content %}
-<!-- Banner Section -->
-<div class="banner-section">
-    <div class="container">
-        <div class="banner-content">
-            <h1>Search Results</h1>
-            <ul>
-                <li><a href="{% url 'home' %}">Home</a></li>
-                <li><i class="fa-solid fa-angle-right"></i></li>
-                <li>Search</li>
-            </ul>
-        </div>
-    </div>
-</div>
+	<link rel="icon" type="image/x-icon" href="{% static 'cms/assets/images/favicon.png' %}">
 
-<!-- Search Results Section -->
-<div class="blog-section">
-    <div class="container">
-        <div class="row">
-            <!-- Search Results -->
-            <div class="col-lg-8">
-                <h2>Search Results for "{{ search_query }}"</h2>
-                
-                {% if blog_entries %}
-                    {% for post in blog_entries %}
-                        {% include "blog/components/post_card.html" with post=post %}
-                    {% endfor %}
-                    
-                    {% include "blog/components/pagination.html" %}
-                {% else %}
-                    <p>No results found for "{{ search_query }}".</p>
-                {% endif %}
-            </div>
-            
-            <!-- Sidebar -->
-            <div class="col-lg-4">
-                {% include "blog/components/sidebar.html" %}
-            </div>
-        </div>
-    </div>
-</div>
-{% endblock %}
+	<!-- Google-Fonts -->
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+
+	<!-- Font Awesome -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"/>
+
+	<!-- Bootstrap -->
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+	<!-- Carousel -->
+	<link rel="stylesheet" type="text/css" href="{% static 'cms/assets/css/owl.carousel.min.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'cms/assets/css/owl.theme.default.min.css' %}">
+
+	<!-- Venobox -->
+	<link rel="stylesheet" type="text/css" href="{% static 'cms/assets/css/venobox.min.css' %}">
+
+	<!-- Asset File -->
+	<link rel="stylesheet" type="text/css" href="{% static 'cms/assets/css/style.css' %}">
+</head>
+<body>
+
+	<!-- Start Site-Header -->
+	<header class="site-header">
+		<!-- Header content (copy from blog.html) -->
+		<div class="top-bar">
+			<div class="container">
+				<div class="top-left">
+					<div class="mail">
+						<a href="mailto:info@example.com"><i class="fa-solid fa-envelope"></i>{{ "info@example.com"|translate_text:request.GET.lang }}</a>
+					</div>
+					<div class="location">
+						<i class="fa-solid fa-location-dot"></i>{{ "6391 Elgin St. Celina, 10299"|translate_text:request.GET.lang }}
+					</div>
+				</div>
+				<div class="top-right">
+					<div class="phone">
+						<a href="tel:6295550129"><i class="fa-solid fa-phone"></i>{{ "(629) 555-0129"|translate_text:request.GET.lang }}</a>
+					</div>
+					<div class="separator"></div>
+					<div class="social">
+						<a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+						<a href="#"><i class="fa-brands fa-instagram"></i></a>
+						<a href="#"><i class="fa-brands fa-youtube"></i></a>
+						<a href="#"><i class="fa-brands fa-linkedin"></i></a>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="container">
+			<div class="menu-bar">
+				<div class="site-logo">
+					<a href="{% url 'cms:home' %}">
+						<img src="{% static 'cms/assets/images/site-logo.png' %}" alt="logo">
+					</a>
+				</div>
+				<div class="main-menu">
+					<ul>
+						<li><a href="{% url 'cms:home' %}">{{ "Home"|translate_text:request.GET.lang }}</a></li>
+						<li><a href="{% url 'cms:about' %}">{{ "About"|translate_text:request.GET.lang }}</a></li>
+						<li><a href="{% url 'cms:classes' %}">{{ "Classes"|translate_text:request.GET.lang }}</a></li>
+						<li class="dropdown">
+							<a href="#">{{ "Pages"|translate_text:request.GET.lang }}<i class="fa-solid fa-chevron-down"></i></a>
+							<ul class="sub-menu">
+								<li><a href="{% url 'cms:class_schedule' %}">{{ "Class Schedule"|translate_text:request.GET.lang }}</a></li>
+								<li><a href="{% url 'cms:gallery' %}">{{ "Gallery"|translate_text:request.GET.lang }}</a></li>
+								<li><a href="{% url 'cms:pricing' %}">{{ "Our Pricing"|translate_text:request.GET.lang }}</a></li>
+								<li><a href="{% url 'cms:trainers' %}">{{ "Trainers"|translate_text:request.GET.lang }}</a></li>
+								<li><a href="{% url 'cms:blog_details' %}">{{ "Blog Details"|translate_text:request.GET.lang }}</a></li>
+								<li><a href="{% url 'cms:class_details' %}">{{ "Class Details"|translate_text:request.GET.lang }}</a></li>
+							</ul>
+						</li>
+						<li><a href="{% url 'cms:blog' %}">{{ "Blog"|translate_text:request.GET.lang }}</a></li>
+						<li><a href="{% url 'cms:contact' %}">{{ "Contact"|translate_text:request.GET.lang }}</a></li>
+					</ul>
+				</div>
+				<div class="button">
+					<a href="{% url 'cms:contact' %}" class="btn">{{ "Join Now"|translate_text:request.GET.lang }}<i class="fa-solid fa-angles-right"></i></a>
+				</div>
+			</div>
+		</div>	
+	</header>
+	<!-- End Site-Header -->
+
+	<!-- Start Breadcrumb -->
+	<div class="breadcrumb-area">
+		<div class="container">
+			<h1 class="heading">{{ "Search Results"|translate_text:request.GET.lang }}</h1>
+			<div class="contact-box">
+				<ul>
+					<li><a href="{% url 'cms:home' %}">{{ "Home"|translate_text:request.GET.lang }}</a></li>
+				</ul>
+				<span><i class="fa-solid fa-chevron-right"></i></span>
+				<span>{{ "Search Results"|translate_text:request.GET.lang }}</span>
+			</div>
+		</div>
+	</div>
+	<!-- End Breadcrumb -->
+
+	<!-- Start Search Results Section -->
+	<section class="blog-pag-section">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-8">
+					<div class="left-content">
+						<h2>{{ "Search Results for"|translate_text:request.GET.lang }}: "{{ search_query }}"</h2>
+						
+						{% if search_results %}
+							{% for post in search_results %}
+							<div class="blog-item">
+								<div class="img-box">
+									{% if post.featured_image %}
+									{% image post.featured_image fill-800x600 as blog_image %}
+									<a href="{% url 'blog:blog_detail' post.slug %}">
+										<img src="{{ blog_image.url }}" alt="{{ blog_image.alt }}">
+									</a>
+									{% endif %}
+								</div>
+								<div class="content">
+									<div class="meta">
+										<span class="date">{{ post.date|date:"F d, Y" }}</span>
+										<span class="categories">
+											{% for category in post.categories.all %}
+											<a href="{% url 'blog:category' category.slug %}">{{ category.name }}</a>{% if not forloop.last %}, {% endif %}
+											{% endfor %}
+										</span>
+									</div>
+									<h3 class="title"><a href="{% url 'blog:blog_detail' post.slug %}">{{ post.title }}</a></h3>
+									<p class="desc">{{ post.intro }}</p>
+									<a href="{% url 'blog:blog_detail' post.slug %}" class="read-more">{{ "Read More"|translate_text:request.GET.lang }} <i class="fa-solid fa-arrow-right"></i></a>
+								</div>
+							</div>
+							{% endfor %}
+							
+							<!-- Pagination -->
+							{% if search_results.has_other_pages %}
+							<div class="pagination">
+								<ul>
+									{% if search_results.has_previous %}
+									<li><a href="?query={{ search_query }}&page={{ search_results.previous_page_number }}"><i class="fa-solid fa-arrow-left"></i></a></li>
+									{% endif %}
+									
+									{% for i in search_results.paginator.page_range %}
+										{% if search_results.number == i %}
+										<li class="active"><a href="#">{{ i }}</a></li>
+										{% else %}
+										<li><a href="?query={{ search_query }}&page={{ i }}">{{ i }}</a></li>
+										{% endif %}
+									{% endfor %}
+									
+									{% if search_results.has_next %}
+									<li><a href="?query={{ search_query }}&page={{ search_results.next_page_number }}"><i class="fa-solid fa-arrow-right"></i></a></li>
+									{% endif %}
+								</ul>
+							</div>
+							{% endif %}
+						{% else %}
+							<p>{{ "No results found for"|translate_text:request.GET.lang }} "{{ search_query }}".</p>
+						{% endif %}
+					</div>
+				</div>
+				
+				<div class="col-lg-4">
+					<div class="right-content">
+						<!-- Search Box -->
+						<div class="search-box">
+							<h4 class="title">{{ "Search"|translate_text:request.GET.lang }}</h4>
+							<form action="{% url 'blog:search' %}" method="get">
+								<input type="text" name="query" placeholder="{{ 'Search...'|translate_text:request.GET.lang }}" value="{{ search_query }}" required>
+								<button type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- End Search Results Section -->
+
+	<!-- Start Footer Section -->
+	<footer class="footer-section">
+		<div class="container">
+			<div class="footer-content">
+				<div class="discription">
+					<img src="{% static 'cms/assets/images/site-logo.png' %}" alt="images">
+					<p>{{ "Achieve your health goals with expert trainers, state-of-the-art equipment, and a supportive community"|translate_text:request.GET.lang }}</p>
+					<ul>
+						<li class="title">{{ "Follow Us:"|translate_text:request.GET.lang }}</li>
+						<li><a href="#"><i class="fa-brands fa-facebook-f"></i></a></li>
+						<li><a href="#"><i class="fa-brands fa-x-twitter"></i></a></li>
+						<li><a href="#"><i class="fa-brands fa-youtube"></i></a></li>
+						<li><a href="#"><i class="fa-brands fa-linkedin"></i></a></li>
+					</ul>
+				</div>
+				<div class="contact">
+					<h3>{{ "Contact"|translate_text:request.GET.lang }}</h3>
+					<ul>
+						<li><a href="mailto:fitcoredemo@example.com"><i class="fa-solid fa-envelope"></i>fitcoredemo@example.com</a></li>
+						<li><a href="tel:56712345678901"><i class="fa-solid fa-phone"></i>+ (567) 1234-567-8901</a></li>
+						<li><i class="fa-solid fa-location-dot"></i>293 Harrison St, San Francisco, CA 94103, United States</li>
+					</ul>
+				</div>
+				<div class="letter">
+					<h3>{{ "Newsletter"|translate_text:request.GET.lang }}</h3>
+					<p>{{ "Subscribe today and unlock 20% off your first class package."|translate_text:request.GET.lang }}</p>
+					<form action="{% url 'cms:newsletter_subscribe' %}" method="post">
+						{% csrf_token %}
+						<div class="mail">
+							<input type="email" name="email" placeholder="{{ 'Enter your Email'|translate_text:request.GET.lang }}" required>
+							<button type="submit"><i class="fa-solid fa-paper-plane"></i></button>
+						</div>
+					</form>
+				</div>
+			</div>
+			<p class="end-text">{{ "All Right Reserved FitCore 2025"|translate_text:request.GET.lang }}</p>
+		</div>
+	</footer>
+	<!-- End Footer Section -->
+
+	<!-- Script Fill -->
+	<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+	<script src="{% static 'cms/assets/js/owl.carousel.min.js' %}"></script>
+	<script src="{% static 'cms/assets/js/venobox.min.js' %}"></script>
+	<script src="{% static 'cms/assets/js/script.js' %}"></script>
+
+</body>
+</html>

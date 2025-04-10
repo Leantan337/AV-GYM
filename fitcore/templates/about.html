@@ -1,10 +1,11 @@
 {% load static %}
+{% load translation_tags %}
 <!DOCTYPE html>
-<html lang="en">
+<html lang="{% if request.GET.lang %}{{ request.GET.lang }}{% else %}en{% endif %}">
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>FitCore</title>
+	<title>{{ "FitCore"|translate_text:request.GET.lang }}</title>
 
 	<link rel="icon" type="image/x-icon" href="{% static 'cms/assets/images/favicon.png' %}">
 
@@ -45,15 +46,15 @@
 			<div class="container">
 				<div class="top-left">
 					<div class="mail">
-						<a href="mailto:info@example.com"><i class="fa-solid fa-envelope"></i>info@example.com</a>
+						<a href="mailto:info@example.com"><i class="fa-solid fa-envelope"></i>{{ "info@example.com"|translate_text:request.GET.lang }}</a>
 					</div>
 					<div class="location">
-						<i class="fa-solid fa-location-dot"></i>6391 Elgin St. Celina, 10299
+						<i class="fa-solid fa-location-dot"></i>{{ "6391 Elgin St. Celina, 10299"|translate_text:request.GET.lang }}
 					</div>
 				</div>
 				<div class="top-right">
 					<div class="phone">
-						<a href="tel:6295550129"><i class="fa-solid fa-phone"></i>(629) 555-0129</a>
+						<a href="tel:6295550129"><i class="fa-solid fa-phone"></i>{{ "(629) 555-0129"|translate_text:request.GET.lang }}</a>
 					</div>
 					<div class="separator"></div>
 					<div class="social">
@@ -74,26 +75,26 @@
 				</div>
 				<div class="main-menu">
 					<ul>
-						<li><a href="{% url 'cms:home' %}">Home</a></li>
-						<li><a href="{% url 'cms:about' %}">About</a></li>
-						<li><a href="{% url 'cms:classes' %}">Classes</a></li>
+						<li><a href="{% url 'cms:home' %}">{{ "Home"|translate_text:request.GET.lang }}</a></li>
+						<li><a href="{% url 'cms:about' %}">{{ "About"|translate_text:request.GET.lang }}</a></li>
+						<li><a href="{% url 'cms:classes' %}">{{ "Classes"|translate_text:request.GET.lang }}</a></li>
 						<li class="dropdown">
-							<a href="#">Pages<i class="fa-solid fa-chevron-down"></i></a>
+							<a href="#">{{ "Pages"|translate_text:request.GET.lang }}<i class="fa-solid fa-chevron-down"></i></a>
 							<ul class="sub-menu">
-								<li><a href="{% url 'cms:class_schedule' %}">Class Schedule</a></li>
-								<li><a href="{% url 'cms:gallery' %}">Gallery</a></li>
-								<li><a href="{% url 'cms:pricing' %}">Our Pricing</a></li>
-								<li><a href="{% url 'cms:trainers' %}">Trainers</a></li>
-								<li><a href="{% url 'cms:blog_details' %}">Blog Details</a></li>
-								<li><a href="{% url 'cms:class_details' %}">Class Details</a></li>
+								<li><a href="{% url 'cms:class_schedule' %}">{{ "Class Schedule"|translate_text:request.GET.lang }}</a></li>
+								<li><a href="{% url 'cms:gallery' %}">{{ "Gallery"|translate_text:request.GET.lang }}</a></li>
+								<li><a href="{% url 'cms:pricing' %}">{{ "Our Pricing"|translate_text:request.GET.lang }}</a></li>
+								<li><a href="{% url 'cms:trainers' %}">{{ "Trainers"|translate_text:request.GET.lang }}</a></li>
+								<li><a href="{% url 'cms:blog_details' %}">{{ "Blog Details"|translate_text:request.GET.lang }}</a></li>
+								<li><a href="{% url 'cms:class_details' %}">{{ "Class Details"|translate_text:request.GET.lang }}</a></li>
 							</ul>
 						</li>
-						<li><a href="{% url 'cms:blog' %}">Blog</a></li>
-						<li><a href="{% url 'cms:contact' %}">Contact</a></li>
+						<li><a href="{% url 'cms:blog' %}">{{ "Blog"|translate_text:request.GET.lang }}</a></li>
+						<li><a href="{% url 'cms:contact' %}">{{ "Contact"|translate_text:request.GET.lang }}</a></li>
 					</ul>
 				</div>
 				<div class="button">
-					<a href="{% url 'cms:contact' %}" class="btn">Join Now<i class="fa-solid fa-angles-right"></i></a>
+					<a href="{% url 'cms:contact' %}" class="btn">{{ "Join Now"|translate_text:request.GET.lang }}<i class="fa-solid fa-angles-right"></i></a>
 				</div>
 			</div>
 		</div>	
@@ -117,37 +118,37 @@
 		<div class="menu-content">
 			<div class="menu">
 				<ul>
-					<li><a href="{% url 'cms:home' %}">Home</a></li>
-					<li><a href="{% url 'cms:about' %}">About</a></li>
-					<li><a href="{% url 'cms:classes' %}">Classes</a></li>
+					<li><a href="{% url 'cms:home' %}">{{ "Home"|translate_text:request.GET.lang }}</a></li>
+					<li><a href="{% url 'cms:about' %}">{{ "About"|translate_text:request.GET.lang }}</a></li>
+					<li><a href="{% url 'cms:classes' %}">{{ "Classes"|translate_text:request.GET.lang }}</a></li>
 					<li class="mobail-dropdown">
-						<a href="#">Pages<i class="fa-solid fa-chevron-down"></i></a>
+						<a href="#">{{ "Pages"|translate_text:request.GET.lang }}<i class="fa-solid fa-chevron-down"></i></a>
 						<ul class="mobail-submenu">
-							<li><a href="{% url 'cms:class_schedule' %}">Class Schedule</a></li>
-							<li><a href="{% url 'cms:gallery' %}">Gallery</a></li>
-							<li><a href="{% url 'cms:pricing' %}">Our Pricing</a></li>
-							<li><a href="{% url 'cms:trainers' %}">Trainers</a></li>
-							<li><a href="{% url 'cms:blog_details' %}">Blog Details</a></li>
-							<li><a href="{% url 'cms:class_details' %}">Class Details</a></li>
+							<li><a href="{% url 'cms:class_schedule' %}">{{ "Class Schedule"|translate_text:request.GET.lang }}</a></li>
+							<li><a href="{% url 'cms:gallery' %}">{{ "Gallery"|translate_text:request.GET.lang }}</a></li>
+							<li><a href="{% url 'cms:pricing' %}">{{ "Our Pricing"|translate_text:request.GET.lang }}</a></li>
+							<li><a href="{% url 'cms:trainers' %}">{{ "Trainers"|translate_text:request.GET.lang }}</a></li>
+							<li><a href="{% url 'cms:blog_details' %}">{{ "Blog Details"|translate_text:request.GET.lang }}</a></li>
+							<li><a href="{% url 'cms:class_details' %}">{{ "Class Details"|translate_text:request.GET.lang }}</a></li>
 						</ul>
 					</li>
-					<li><a href="{% url 'cms:blog' %}">Blog</a></li>
-					<li><a href="{% url 'cms:contact' %}">Contact</a></li>
+					<li><a href="{% url 'cms:blog' %}">{{ "Blog"|translate_text:request.GET.lang }}</a></li>
+					<li><a href="{% url 'cms:contact' %}">{{ "Contact"|translate_text:request.GET.lang }}</a></li>
 				</ul>
 			</div>
 			<div class="info">
-				<h3 class="title">Contact Info</h3>
+				<h3 class="title">{{ "Contact Info"|translate_text:request.GET.lang }}</h3>
 				<div class="info-box">
 					<i class="fa-solid fa-location-dot"></i>
-					6391 Elgin St. Celina, Delaware 10299
+					{{ "6391 Elgin St. Celina, Delaware 10299"|translate_text:request.GET.lang }}
 				</div>
 				<div class="info-box">
 					<i class="fa-solid fa-phone"></i>
-					<a href="#">(209) 555-0104</a>
+					<a href="#">{{ "(209) 555-0104"|translate_text:request.GET.lang }}</a>
 				</div>
 				<div class="info-box">
 					<i class="fa-solid fa-envelope"></i>
-					<a href="#">info@example.com</a>
+					<a href="#">{{ "info@example.com"|translate_text:request.GET.lang }}</a>
 				</div>
 			</div>
 			<div class="component">
@@ -155,7 +156,7 @@
 					<i class="fa-solid fa-magnifying-glass"></i>
 				</div>
 				<div class="button">
-					<a href="#" class="btn">Get A Quote<i class="fa-solid fa-arrow-right"></i></a>
+					<a href="#" class="btn">{{ "Get A Quote"|translate_text:request.GET.lang }}<i class="fa-solid fa-arrow-right"></i></a>
 				</div>
 			</div>
 		</div>
@@ -167,13 +168,13 @@
 
 	<div class="breadcrumb-area">
 		<div class="container">
-			<h1 class="heading">About</h1>
+			<h1 class="heading">{{ "About"|translate_text:request.GET.lang }}</h1>
 			<div class="contact-box">
 				<ul>
-					<li><a href="{% url 'cms:home' %}">Home</a></li>
+					<li><a href="{% url 'cms:home' %}">{{ "Home"|translate_text:request.GET.lang }}</a></li>
 				</ul>
 				<span><i class="fa-solid fa-chevron-right"></i></span>
-				<span>About</span>
+				<span>{{ "About"|translate_text:request.GET.lang }}</span>
 			</div>
 		</div>
 	</div>
@@ -207,16 +208,16 @@
 				<div class="col-lg-12 col-xl-6">
 					<div class="about-right">
 						<div class="section-title">
-							<h4 class="subtitle"><span>About Us</span></h4>
-							<h1 class="title">Elevate Your Ultimate Fitness Journey</h1>
+							<h4 class="subtitle"><span>{{ "About Us"|translate_text:request.GET.lang }}</span></h4>
+							<h1 class="title">{{ "Elevate Your Ultimate Fitness Journey"|translate_text:request.GET.lang }}</h1>
 						</div>
-						<p class="discription">Achieve your health goals with expert trainers, state-of-the-art equipment, and a supportive community designed to empower your fitness journey.</p>
+						<p class="discription">{{ "Achieve your health goals with expert trainers, state-of-the-art equipment, and a supportive community designed to empower your fitness journey."|translate_text:request.GET.lang }}</p>
 						<div class="list-box">
 							<div class="list">
 								<ul>
-									<li><i class="fa-solid fa-bolt"></i><span>Personalized Workout Programs</span></li>
-									<li><i class="fa-solid fa-bolt"></i><span>Complete Support Throughout</span></li>
-									<li><i class="fa-solid fa-bolt"></i><span>Proven Results You Can Trust</span></li>
+									<li><i class="fa-solid fa-bolt"></i><span>{{ "Personalized Workout Programs"|translate_text:request.GET.lang }}</span></li>
+									<li><i class="fa-solid fa-bolt"></i><span>{{ "Complete Support Throughout"|translate_text:request.GET.lang }}</span></li>
+									<li><i class="fa-solid fa-bolt"></i><span>{{ "Proven Results You Can Trust"|translate_text:request.GET.lang }}</span></li>
 								</ul>
 							</div>
 							<div class="video">
@@ -224,7 +225,7 @@
 							</div>
 						</div>
 						<div class="button">
-							<a href="{% url 'cms:contact' %}" class="btn">Get Started Today<i class="fa-solid fa-arrow-right"></i></a>
+							<a href="{% url 'cms:contact' %}" class="btn">{{ "Get Started Today"|translate_text:request.GET.lang }}<i class="fa-solid fa-arrow-right"></i></a>
 						</div>
 					</div>
 				</div>
@@ -238,8 +239,8 @@
 
 	<section class="choose-us-section">
 		<div class="section-title">
-			<h4 class="subtitle"><span>Why Choose Us</span></h4>
-			<h1 class="title">Top trainers, best equipment, supportive community</h1>
+			<h4 class="subtitle"><span>{{ "Why Choose Us"|translate_text:request.GET.lang }}</span></h4>
+			<h1 class="title">{{ "Top trainers, best equipment, supportive community"|translate_text:request.GET.lang }}</h1>
 		</div>	
 	</section>
 
@@ -251,18 +252,18 @@
 		<div class="container">
 			<div class="join-content">
 				<div class="content-left">
-					<p>Achieve your health goals with expert trainers, state-of-the-art equipment, and a supportive community designed to empower your fitness journey.</p>
+					<p>{{ "Achieve your health goals with expert trainers, state-of-the-art equipment, and a supportive community designed to empower your fitness journey."|translate_text:request.GET.lang }}</p>
 					<div class="box">
 						<span class="number">01</span>
-						<span class="text">Unparalleled Personal Training</span>
+						<span class="text">{{ "Unparalleled Personal Training"|translate_text:request.GET.lang }}</span>
 					</div>
 					<div class="box middle-item">
-						<span class="text two">Studios and luxury amenities</span>
+						<span class="text two">{{ "Studios and luxury amenities"|translate_text:request.GET.lang }}</span>
 						<span class="number two">02</span>
 					</div>
 					<div class="box">
 						<span class="number">03</span>
-						<span class="text">Unrivaled Group Fitness classes</span>
+						<span class="text">{{ "Unrivaled Group Fitness classes"|translate_text:request.GET.lang }}</span>
 					</div>
 				</div>
 				<div class="content-right">
@@ -279,8 +280,8 @@
 	<section class="work-process">
 		<div class="container">
 			<div class="section-title">
-				<h4 class="subtitle"><span>WORK PROCESS</span></h4>
-				<h1 class="title">Fitness Made Simple</h1>
+				<h4 class="subtitle"><span>{{ "WORK PROCESS"|translate_text:request.GET.lang }}</span></h4>
+				<h1 class="title">{{ "Fitness Made Simple"|translate_text:request.GET.lang }}</h1>
 			</div>
 			<div class="row">
 				<div class="col-md-6 col-xl-3">
@@ -295,8 +296,8 @@
 								</div>
 							</div>
 							<div class="content">
-								<h3 class="title">Workout Planning</h3>
-								<p class="description">Elevate your fitness level by combining strength</p>
+								<h3 class="title">{{ "Workout Planning"|translate_text:request.GET.lang }}</h3>
+								<p class="description">{{ "Elevate your fitness level by combining strength"|translate_text:request.GET.lang }}</p>
 							</div>
 						</div>
 						<div class="number">01</div>
@@ -314,8 +315,8 @@
 								</div>
 							</div>
 							<div class="content">
-								<h3 class="title">Gym Movement</h3>
-								<p class="description">Elevate your fitness level by combining strength</p>
+								<h3 class="title">{{ "Gym Movement"|translate_text:request.GET.lang }}</h3>
+								<p class="description">{{ "Elevate your fitness level by combining strength"|translate_text:request.GET.lang }}</p>
 							</div>
 						</div>
 						<div class="number">02</div>
@@ -333,8 +334,8 @@
 								</div>
 							</div>
 							<div class="content">
-								<h3 class="title">Fitness Practice</h3>
-								<p class="description">Elevate your fitness level by combining strength</p>
+								<h3 class="title">{{ "Fitness Practice"|translate_text:request.GET.lang }}</h3>
+								<p class="description">{{ "Elevate your fitness level by combining strength"|translate_text:request.GET.lang }}</p>
 							</div>
 						</div>
 						<div class="number">03</div>
@@ -352,8 +353,8 @@
 								</div>
 							</div>
 							<div class="content">
-								<h3 class="title">Achievement</h3>
-								<p class="description">Elevate your fitness level by combining strength</p>
+								<h3 class="title">{{ "Achievement"|translate_text:request.GET.lang }}</h3>
+								<p class="description">{{ "Elevate your fitness level by combining strength"|translate_text:request.GET.lang }}</p>
 							</div>
 						</div>
 						<div class="number">04</div>
@@ -371,12 +372,12 @@
 	<section class="testimonial-section">
 		<div class="container">
 			<div class="section-title">
-				<h4 class="subtitle"><span>Testimonial</span></h4>
-				<h1 class="title">What Our Client Say?</h1>
+				<h4 class="subtitle"><span>{{ "Testimonial"|translate_text:request.GET.lang }}</span></h4>
+				<h1 class="title">{{ "What Our Client Say?"|translate_text:request.GET.lang }}</h1>
 			</div>
 			<div class="testimonial-carousel owl-carousel">
 				<div class="testimonial-content">
-					<h3 class="text">Customers rave about the durability and performance of our electric equipment. Many highlight the exceptional build quality, energy efficiency, and user-friendly design</h3>
+					<h3 class="text">{{ "Customers rave about the durability and performance of our electric equipment. Many highlight the exceptional build quality, energy efficiency, and user-friendly design"|translate_text:request.GET.lang }}</h3>
 					<div class="profile">
 						<div class="profile-img">
 							<img src="{% static 'cms/assets/images/testimonial-man.png' %}" alt="images">
@@ -389,13 +390,13 @@
 								<li><i class="fa-solid fa-star"></i></li>
 								<li><i class="fa-solid fa-star"></i></li>
 							</ul>
-							<h4 class="name">Yousuf Kibriya</h4>
-							<p>Business Man</p>
+							<h4 class="name">{{ "Yousuf Kibriya"|translate_text:request.GET.lang }}</h4>
+							<p>{{ "Business Man"|translate_text:request.GET.lang }}</p>
 						</div>
 					</div>
 				</div>
 				<div class="testimonial-content">
-					<h3 class="text">Customers rave about the durability and performance of our electric equipment. Many highlight the exceptional build quality, energy efficiency, and user-friendly design</h3>
+					<h3 class="text">{{ "Customers rave about the durability and performance of our electric equipment. Many highlight the exceptional build quality, energy efficiency, and user-friendly design"|translate_text:request.GET.lang }}</h3>
 					<div class="profile">
 						<div class="profile-img">
 							<img src="{% static 'cms/assets/images/testimonial-man.png' %}" alt="images">
@@ -408,8 +409,8 @@
 								<li><i class="fa-solid fa-star"></i></li>
 								<li><i class="fa-solid fa-star"></i></li>
 							</ul>
-							<h4 class="name">Yousuf Kibriya</h4>
-							<p>Business Man</p>
+							<h4 class="name">{{ "Yousuf Kibriya"|translate_text:request.GET.lang }}</h4>
+							<p>{{ "Business Man"|translate_text:request.GET.lang }}</p>
 						</div>
 					</div>
 				</div>
@@ -425,11 +426,11 @@
 		<div class="container">
 			<div class="top">
 				<div class="section-title">
-					<h4 class="subtitle"><span>Team Member</span></h4>
-					<h1 class="title">Our Expert Trainers </h1>
+					<h4 class="subtitle"><span>{{ "Team Member"|translate_text:request.GET.lang }}</span></h4>
+					<h1 class="title">{{ "Our Expert Trainers"|translate_text:request.GET.lang }}</h1>
 				</div>
 				<div class="button">
-					<a href="{% url 'cms:classes' %}" class="btn">View Classes<i class="fa-solid fa-square-arrow-up-right"></i></a>
+					<a href="{% url 'cms:classes' %}" class="btn">{{ "View Classes"|translate_text:request.GET.lang }}<i class="fa-solid fa-square-arrow-up-right"></i></a>
 				</div>
 			</div>
 			<div class="row">
@@ -439,8 +440,8 @@
 						<img src="{% static 'cms/assets/images/member-1.png' %}" alt="images">
 					</div>
 					<div class="bio">
-						<h4 class="name">Harvey jones</h4>
-						<p>Body Building</p>
+						<h4 class="name">{{ "Harvey jones"|translate_text:request.GET.lang }}</h4>
+						<p>{{ "Body Building"|translate_text:request.GET.lang }}</p>
 						<ul class="social-icons">
 							<li><a href="#"><i class="fa-brands fa-facebook-f"></i></a></li>
 							<li><a href="#"><i class="fa-brands fa-x-twitter"></i></a></li>
@@ -454,8 +455,8 @@
 						<img src="{% static 'cms/assets/images/member-2.png' %}" alt="images">
 					</div>
 					<div class="bio">
-						<h4 class="name">David Harris</h4>
-						<p>Strength Trainer</p>
+						<h4 class="name">{{ "David Harris"|translate_text:request.GET.lang }}</h4>
+						<p>{{ "Strength Trainer"|translate_text:request.GET.lang }}</p>
 						<ul class="social-icons">
 							<li><a href="#"><i class="fa-brands fa-facebook-f"></i></a></li>
 							<li><a href="#"><i class="fa-brands fa-x-twitter"></i></a></li>
@@ -469,8 +470,8 @@
 						<img src="{% static 'cms/assets/images/member-3.png' %}" alt="images">
 					</div>
 					<div class="bio">
-						<h4 class="name">Harlien puth</h4>
-						<p>Strength Trainer</p>
+						<h4 class="name">{{ "Harlien puth"|translate_text:request.GET.lang }}</h4>
+						<p>{{ "Strength Trainer"|translate_text:request.GET.lang }}</p>
 						<ul class="social-icons">
 							<li><a href="#"><i class="fa-brands fa-facebook-f"></i></a></li>
 							<li><a href="#"><i class="fa-brands fa-x-twitter"></i></a></li>
@@ -484,8 +485,8 @@
 						<img src="{% static 'cms/assets/images/member-4.png' %}" alt="images">
 					</div>
 					<div class="bio">
-						<h4 class="name">Tristin Chinez</h4>
-						<p>Yoga Coach</p>
+						<h4 class="name">{{ "Tristin Chinez"|translate_text:request.GET.lang }}</h4>
+						<p>{{ "Yoga Coach"|translate_text:request.GET.lang }}</p>
 						<ul class="social-icons">
 							<li><a href="#"><i class="fa-brands fa-facebook-f"></i></a></li>
 							<li><a href="#"><i class="fa-brands fa-x-twitter"></i></a></li>
@@ -553,9 +554,9 @@
 			<div class="footer-content">
 				<div class="discription">
 					<img src="{% static 'cms/assets/images/site-logo.png' %}" alt="images">
-					<p>Achieve your health goals with expert trainers, state-of-the-art equipment, and a supportive community</p>
+					<p>{{ "Achieve your health goals with expert trainers, state-of-the-art equipment, and a supportive community"|translate_text:request.GET.lang }}</p>
 					<ul>
-						<li class="title">Follow Us:</li>
+						<li class="title">{{ "Follow Us:"|translate_text:request.GET.lang }}</li>
 						<li><a href="#"><i class="fa-brands fa-facebook-f"></i></a></li>
 						<li><a href="#"><i class="fa-brands fa-x-twitter"></i></a></li>
 						<li><a href="#"><i class="fa-brands fa-youtube"></i></a></li>
@@ -563,7 +564,7 @@
 					</ul>
 				</div>
 				<div class="contact">
-					<h3>Contact</h3>
+					<h3>{{ "Contact"|translate_text:request.GET.lang }}</h3>
 					<ul>
 						<li><a href="mailto:fitcoredemo@example.com"><i class="fa-solid fa-envelope"></i>fitcoredemo@example.com</a></li>
 						<li><a href="tel:56712345678901"><i class="fa-solid fa-phone"></i>+ (567) 1234-567-8901</a></li>
@@ -571,18 +572,18 @@
 					</ul>
 				</div>
 				<div class="letter">
-					<h3>Newsletter</h3>
-					<p>Subscribe today and unlock 20% off your first class package.</p>
+					<h3>{{ "Newsletter"|translate_text:request.GET.lang }}</h3>
+					<p>{{ "Subscribe today and unlock 20% off your first class package."|translate_text:request.GET.lang }}</p>
 					<form action="{% url 'cms:newsletter_subscribe' %}" method="post">
 						{% csrf_token %}
 						<div class="mail">
-							<input type="email" name="email" placeholder="Enter your Email" required>
+							<input type="email" name="email" placeholder="{{ 'Enter your Email'|translate_text:request.GET.lang }}" required>
 							<button type="submit"><i class="fa-solid fa-paper-plane"></i></button>
 						</div>
 					</form>
 				</div>
 			</div>
-			<p class="end-text">All Right Reserved FitCore 2025</p>
+			<p class="end-text">{{ "All Right Reserved FitCore 2025"|translate_text:request.GET.lang }}</p>
 		</div>
 	</footer>
 
@@ -594,7 +595,7 @@
 		<button class="search-close"><i class="fa-solid fa-xmark"></i></button>
 		<form method="get" action="{% url 'cms:search' %}">
 			<div class="form-group">
-				<input type="search" name="search-field" value="" placeholder="Search Here" required="">
+				<input type="search" name="search-field" value="" placeholder="{{ 'Search Here'|translate_text:request.GET.lang }}" required="">
 				<button type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
 			</div>
 		</form>

@@ -1,10 +1,11 @@
 {% load static %}
+{% load translation_tags %}
 <!DOCTYPE html>
-<html lang="en">
+<html lang="{% if request.GET.lang %}{{ request.GET.lang }}{% else %}en{% endif %}">
 <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Search Results - FitCore</title>
+        <title>{{ "Search Results - FitCore"|translate_text:request.GET.lang }}</title>
 
         <link rel="icon" type="image/x-icon" href="{% static 'cms/assets/images/favicon.png' %}">
 
@@ -43,27 +44,27 @@
                                         <div class="menu-bar">
                                                 <div class="main-menu">
                                                         <ul>
-                                                                <li><a href="{% url 'cms:home' %}">Home</a></li>
-                                                                <li><a href="{% url 'cms:about' %}">About</a></li>
-                                                                <li><a href="{% url 'cms:classes' %}">Classes</a></li>
+                                                                <li><a href="{% url 'cms:home' %}">{{ "Home"|translate_text:request.GET.lang }}</a></li>
+                                                                <li><a href="{% url 'cms:about' %}">{{ "About"|translate_text:request.GET.lang }}</a></li>
+                                                                <li><a href="{% url 'cms:classes' %}">{{ "Classes"|translate_text:request.GET.lang }}</a></li>
                                                                 <li class="menu-item-has-children">
-                                                                        <a href="#">Pages</a>
+                                                                        <a href="#">{{ "Pages"|translate_text:request.GET.lang }}</a>
                                                                         <ul class="sub-menu">
-                                                                                <li><a href="{% url 'cms:class_schedule' %}">Class Schedule</a></li>
-                                                                                <li><a href="{% url 'cms:gallery' %}">Gallery</a></li>
-                                                                                <li><a href="{% url 'cms:pricing' %}">Our Pricing</a></li>
-                                                                                <li><a href="{% url 'cms:trainers' %}">Trainers</a></li>
-                                                                                <li><a href="{% url 'cms:blog_details' %}">Blog Details</a></li>
-                                                                                <li><a href="{% url 'cms:class_details' %}">Class Details</a></li>
+                                                                                <li><a href="{% url 'cms:class_schedule' %}">{{ "Class Schedule"|translate_text:request.GET.lang }}</a></li>
+                                                                                <li><a href="{% url 'cms:gallery' %}">{{ "Gallery"|translate_text:request.GET.lang }}</a></li>
+                                                                                <li><a href="{% url 'cms:pricing' %}">{{ "Our Pricing"|translate_text:request.GET.lang }}</a></li>
+                                                                                <li><a href="{% url 'cms:trainers' %}">{{ "Trainers"|translate_text:request.GET.lang }}</a></li>
+                                                                                <li><a href="{% url 'cms:blog_details' %}">{{ "Blog Details"|translate_text:request.GET.lang }}</a></li>
+                                                                                <li><a href="{% url 'cms:class_details' %}">{{ "Class Details"|translate_text:request.GET.lang }}</a></li>
                                                                         </ul>
                                                                 </li>
-                                                                <li><a href="{% url 'cms:blog' %}">Blog</a></li>
-                                                                <li><a href="{% url 'cms:contact' %}">Contact</a></li>
+                                                                <li><a href="{% url 'cms:blog' %}">{{ "Blog"|translate_text:request.GET.lang }}</a></li>
+                                                                <li><a href="{% url 'cms:contact' %}">{{ "Contact"|translate_text:request.GET.lang }}</a></li>
                                                         </ul>
                                                 </div>
                                                 <div class="header-right d-flex">
                                                         <a href="#" class="search-icon"><i class="fa-solid fa-magnifying-glass"></i></a>
-                                                        <a href="{% url 'cms:contact' %}" class="button">Join Now <span></span></a>
+                                                        <a href="{% url 'cms:contact' %}" class="button">{{ "Join Now"|translate_text:request.GET.lang }} <span></span></a>
                                                 </div>
                                         </div>
                                 </div>
@@ -89,37 +90,37 @@
                 <div class="menu-content">
                         <div class="menu">
                                 <ul>
-                                        <li><a href="{% url 'cms:home' %}">Home</a></li>
-                                        <li><a href="{% url 'cms:about' %}">About</a></li>
-                                        <li><a href="{% url 'cms:classes' %}">Classes</a></li>
+                                        <li><a href="{% url 'cms:home' %}">{{ "Home"|translate_text:request.GET.lang }}</a></li>
+                                        <li><a href="{% url 'cms:about' %}">{{ "About"|translate_text:request.GET.lang }}</a></li>
+                                        <li><a href="{% url 'cms:classes' %}">{{ "Classes"|translate_text:request.GET.lang }}</a></li>
                                         <li class="mobail-dropdown">
-                                                <a href="#">Pages<i class="fa-solid fa-chevron-down"></i></a>
+                                                <a href="#">{{ "Pages"|translate_text:request.GET.lang }}<i class="fa-solid fa-chevron-down"></i></a>
                                                 <ul class="mobail-submenu">
-                                                        <li><a href="{% url 'cms:class_schedule' %}">Class Schedule</a></li>
-                                                        <li><a href="{% url 'cms:gallery' %}">Gallery</a></li>
-                                                        <li><a href="{% url 'cms:pricing' %}">Our Pricing</a></li>
-                                                        <li><a href="{% url 'cms:trainers' %}">Trainers</a></li>
-                                                        <li><a href="{% url 'cms:blog_details' %}">Blog Details</a></li>
-                                                        <li><a href="{% url 'cms:class_details' %}">Class Details</a></li>
+                                                        <li><a href="{% url 'cms:class_schedule' %}">{{ "Class Schedule"|translate_text:request.GET.lang }}</a></li>
+                                                        <li><a href="{% url 'cms:gallery' %}">{{ "Gallery"|translate_text:request.GET.lang }}</a></li>
+                                                        <li><a href="{% url 'cms:pricing' %}">{{ "Our Pricing"|translate_text:request.GET.lang }}</a></li>
+                                                        <li><a href="{% url 'cms:trainers' %}">{{ "Trainers"|translate_text:request.GET.lang }}</a></li>
+                                                        <li><a href="{% url 'cms:blog_details' %}">{{ "Blog Details"|translate_text:request.GET.lang }}</a></li>
+                                                        <li><a href="{% url 'cms:class_details' %}">{{ "Class Details"|translate_text:request.GET.lang }}</a></li>
                                                 </ul>
                                         </li>
-                                        <li><a href="{% url 'cms:blog' %}">Blog</a></li>
-                                        <li><a href="{% url 'cms:contact' %}">Contact</a></li>
+                                        <li><a href="{% url 'cms:blog' %}">{{ "Blog"|translate_text:request.GET.lang }}</a></li>
+                                        <li><a href="{% url 'cms:contact' %}">{{ "Contact"|translate_text:request.GET.lang }}</a></li>
                                 </ul>
                         </div>
                         <div class="info">
-                                <h3 class="title">Contact Info</h3>
+                                <h3 class="title">{{ "Contact Info"|translate_text:request.GET.lang }}</h3>
                                 <div class="info-box">
                                         <i class="fa-solid fa-location-dot"></i>
-                                        6391 Elgin St. Celina, Delaware 10299
+                                        {{ "6391 Elgin St. Celina, Delaware 10299"|translate_text:request.GET.lang }}
                                 </div>
                                 <div class="info-box">
                                         <i class="fa-solid fa-phone"></i>
-                                        <a href="#">(209) 555-0104</a>
+                                        <a href="#">{{ "(209) 555-0104"|translate_text:request.GET.lang }}</a>
                                 </div>
                                 <div class="info-box">
                                         <i class="fa-solid fa-envelope"></i>
-                                        <a href="#">info@example.com</a>
+                                        <a href="#">{{ "info@example.com"|translate_text:request.GET.lang }}</a>
                                 </div>
                         </div>
                 </div>
@@ -132,10 +133,10 @@
         <section class="hero-section blog-hero">
                 <div class="container">
                         <div class="hero-content">
-                                <h1>Search Results</h1>
+                                <h1>{{ "Search Results"|translate_text:request.GET.lang }}</h1>
                                 <ul>
-                                        <li><a href="{% url 'cms:home' %}">Home</a></li>
-                                        <li>Search Results for: "{{ query }}"</li>
+                                        <li><a href="{% url 'cms:home' %}">{{ "Home"|translate_text:request.GET.lang }}</a></li>
+                                        <li>{{ "Search Results for:"|translate_text:request.GET.lang }} "{{ query }}"</li>
                                 </ul>
                         </div>
                 </div>
@@ -148,11 +149,11 @@
         <section class="search-results-section section-padding">
                 <div class="container">
                         <div class="search-results-header">
-                                <h2 class="title">Search Results for: "{{ query }}"</h2>
+                                <h2 class="title">{{ "Search Results for:"|translate_text:request.GET.lang }} "{{ query }}"</h2>
                                 {% if query and blog_results %}
-                                <p>Found {{ blog_results|length }} result{% if blog_results|length != 1 %}s{% endif %}</p>
+                                <p>{{ "Found"|translate_text:request.GET.lang }} {{ blog_results|length }} {{ "result"|translate_text:request.GET.lang }}{% if blog_results|length != 1 %}{{ "s"|translate_text:request.GET.lang }}{% endif %}</p>
                                 {% else %}
-                                <p>No results found for your search query.</p>
+                                <p>{{ "No results found for your search query."|translate_text:request.GET.lang }}</p>
                                 {% endif %}
                         </div>
 
@@ -173,12 +174,12 @@
                                                                 <div class="blog-meta">
                                                                         <ul>
                                                                                 <li><i class="fa-regular fa-calendar-days"></i>{{ post.date|date:"d M Y" }}</li>
-                                                                                <li><i class="fa-regular fa-user"></i>Admin</li>
+                                                                                <li><i class="fa-regular fa-user"></i>{{ "Admin"|translate_text:request.GET.lang }}</li>
                                                                         </ul>
                                                                 </div>
                                                                 <h3 class="title"><a href="{{ post.url }}">{{ post.title }}</a></h3>
                                                                 <p>{{ post.intro|truncatewords:15 }}</p>
-                                                                <a href="{{ post.url }}" class="read-more">Read More<i class="fa-solid fa-arrow-right"></i></a>
+                                                                <a href="{{ post.url }}" class="read-more">{{ "Read More"|translate_text:request.GET.lang }}<i class="fa-solid fa-arrow-right"></i></a>
                                                         </div>
                                                 </div>
                                         </div>
@@ -187,11 +188,11 @@
                         </div>
                         {% else %}
                         <div class="no-results">
-                                <p>Try adjusting your search criteria or browse our <a href="{% url 'cms:blog' %}">blog section</a> to find related content.</p>
+                                <p>{{ "Try adjusting your search criteria or browse our"|translate_text:request.GET.lang }} <a href="{% url 'cms:blog' %}">{{ "blog section"|translate_text:request.GET.lang }}</a> {{ "to find related content."|translate_text:request.GET.lang }}</p>
                                 <div class="search-again">
                                         <form action="{% url 'cms:search' %}" method="get">
                                                 <div class="search-box">
-                                                        <input type="text" name="search-field" placeholder="Try another search..." value="{{ query }}">
+                                                        <input type="text" name="search-field" placeholder="{{ 'Try another search...'|translate_text:request.GET.lang }}" value="{{ query }}">
                                                         <button type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
                                                 </div>
                                         </form>
@@ -210,9 +211,9 @@
                         <div class="footer-content">
                                 <div class="discription">
                                         <img src="{% static 'cms/assets/images/site-logo.png' %}" alt="images">
-                                        <p>Achieve your health goals with expert trainers, state-of-the-art equipment, and a supportive community</p>
+                                        <p>{{ "Achieve your health goals with expert trainers, state-of-the-art equipment, and a supportive community"|translate_text:request.GET.lang }}</p>
                                         <ul>
-                                                <li class="title">Follow Us:</li>
+                                                <li class="title">{{ "Follow Us:"|translate_text:request.GET.lang }}</li>
                                                 <li><a href="#"><i class="fa-brands fa-facebook-f"></i></a></li>
                                                 <li><a href="#"><i class="fa-brands fa-x-twitter"></i></a></li>
                                                 <li><a href="#"><i class="fa-brands fa-instagram"></i></a></li>
@@ -221,26 +222,26 @@
                                         </ul>
                                 </div>
                                 <div class="contact">
-                                        <h3>Contact</h3>
+                                        <h3>{{ "Contact"|translate_text:request.GET.lang }}</h3>
                                         <ul>
-                                                <li><a href="mailto:fitcoredemo@example.com"><i class="fa-solid fa-envelope"></i>fitcoredemo@example.com</a></li>
-                                                <li><a href="tel:56712345678901"><i class="fa-solid fa-phone"></i>+ (567) 1234-567-8901</a></li>
-                                                <li><i class="fa-solid fa-location-dot"></i>293 Harrison St, San Francisco, CA 94103, United States</li>
+                                                <li><a href="mailto:fitcoredemo@example.com"><i class="fa-solid fa-envelope"></i>{{ "fitcoredemo@example.com"|translate_text:request.GET.lang }}</a></li>
+                                                <li><a href="tel:56712345678901"><i class="fa-solid fa-phone"></i>{{ "+ (567) 1234-567-8901"|translate_text:request.GET.lang }}</a></li>
+                                                <li><i class="fa-solid fa-location-dot"></i>{{ "293 Harrison St, San Francisco, CA 94103, United States"|translate_text:request.GET.lang }}</li>
                                         </ul>
                                 </div>
                                 <div class="letter">
-                                        <h3>Newsletter</h3>
-                                        <p>Subscribe today and unlock 20% off your first class package.</p>
+                                        <h3>{{ "Newsletter"|translate_text:request.GET.lang }}</h3>
+                                        <p>{{ "Subscribe today and unlock 20% off your first class package."|translate_text:request.GET.lang }}</p>
                                         <form action="{% url 'cms:newsletter_subscribe' %}" method="post">
                                                 {% csrf_token %}
                                                 <div class="mail">
-                                                        <input type="email" name="email" placeholder="Enter your Email" required>
+                                                        <input type="email" name="email" placeholder="{{ 'Enter your Email'|translate_text:request.GET.lang }}" required>
                                                         <button type="submit"><i class="fa-solid fa-paper-plane"></i></button>
                                                 </div>
                                         </form>
                                 </div>
                         </div>
-                        <p class="end-text">All Right Reserved &copy; FitCore 2025</p>
+                        <p class="end-text">{{ "All Right Reserved &copy; FitCore 2025"|translate_text:request.GET.lang }}</p>
                 </div>
         </footer>
 

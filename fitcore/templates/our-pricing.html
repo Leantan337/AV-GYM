@@ -1,6 +1,7 @@
 {% load static %}
+{% load translation_tags %}
 <!DOCTYPE html>
-<html lang="en">
+<html lang="{{ request.LANGUAGE_CODE }}">
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -45,15 +46,15 @@
 			<div class="container">
 				<div class="top-left">
 					<div class="mail">
-						<a href="mailto:info@example.com"><i class="fa-solid fa-envelope"></i>info@example.com</a>
+						<a href="mailto:info@example.com"><i class="fa-solid fa-envelope"></i>{{ "info@example.com"|translate_text }}</a>
 					</div>
 					<div class="location">
-						<i class="fa-solid fa-location-dot"></i>6391 Elgin St. Celina, 10299
+						<i class="fa-solid fa-location-dot"></i>{{ "6391 Elgin St. Celina, 10299"|translate_text }}
 					</div>
 				</div>
 				<div class="top-right">
 					<div class="phone">
-						<a href="tel:6295550129"><i class="fa-solid fa-phone"></i>(629) 555-0129</a>
+						<a href="tel:6295550129"><i class="fa-solid fa-phone"></i>{{ "(629) 555-0129"|translate_text }}</a>
 					</div>
 					<div class="separator"></div>
 					<div class="social">
@@ -74,26 +75,26 @@
 				</div>
 				<div class="main-menu">
 					<ul>
-						<li><a href="{% url 'cms:home' %}">Home</a></li>
-						<li><a href="{% url 'cms:about' %}">About</a></li>
-						<li><a href="{% url 'cms:classes' %}">Classes</a></li>
+						<li><a href="{% url 'cms:home' %}">{{ "Home"|translate_text }}</a></li>
+						<li><a href="{% url 'cms:about' %}">{{ "About"|translate_text }}</a></li>
+						<li><a href="{% url 'cms:classes' %}">{{ "Classes"|translate_text }}</a></li>
 						<li class="dropdown">
-							<a href="#">Pages<i class="fa-solid fa-chevron-down"></i></a>
+							<a href="#">{{ "Pages"|translate_text }}<i class="fa-solid fa-chevron-down"></i></a>
 							<ul class="sub-menu">
-								<li><a href="{% url 'cms:class_schedule' %}">Class Schedule</a></li>
-								<li><a href="{% url 'cms:gallery' %}">Gallery</a></li>
-								<li><a href="{% url 'cms:pricing' %}">Our Pricing</a></li>
-								<li><a href="{% url 'cms:trainers' %}">Trainers</a></li>
-								<li><a href="{% url 'cms:blog_details' %}">Blog Details</a></li>
-								<li><a href="{% url 'cms:class_details' %}">Class Details</a></li>
+								<li><a href="{% url 'cms:class_schedule' %}">{{ "Class Schedule"|translate_text }}</a></li>
+								<li><a href="{% url 'cms:gallery' %}">{{ "Gallery"|translate_text }}</a></li>
+								<li><a href="{% url 'cms:pricing' %}">{{ "Our Pricing"|translate_text }}</a></li>
+								<li><a href="{% url 'cms:trainers' %}">{{ "Trainers"|translate_text }}</a></li>
+								<li><a href="{% url 'cms:blog_details' %}">{{ "Blog Details"|translate_text }}</a></li>
+								<li><a href="{% url 'cms:class_details' %}">{{ "Class Details"|translate_text }}</a></li>
 							</ul>
 						</li>
-						<li><a href="{% url 'cms:blog' %}">Blog</a></li>
-						<li><a href="{% url 'cms:contact' %}">Contact</a></li>
+						<li><a href="{% url 'cms:blog' %}">{{ "Blog"|translate_text }}</a></li>
+						<li><a href="{% url 'cms:contact' %}">{{ "Contact"|translate_text }}</a></li>
 					</ul>
 				</div>
 				<div class="button">
-					<a href="{% url 'cms:contact' %}" class="btn">Join Now<i class="fa-solid fa-angles-right"></i></a>
+					<a href="{% url 'cms:contact' %}" class="btn">{{ "Join Now"|translate_text }}<i class="fa-solid fa-angles-right"></i></a>
 				</div>
 			</div>
 		</div>	
@@ -117,22 +118,22 @@
 		<div class="menu-content">
 			<div class="menu">
 				<ul>
-					<li><a href="{% url 'cms:home' %}">Home</a></li>
-					<li><a href="{% url 'cms:about' %}">About</a></li>
-					<li><a href="{% url 'cms:classes' %}">Classes</a></li>
+					<li><a href="{% url 'cms:home' %}">{{ "Home"|translate_text }}</a></li>
+					<li><a href="{% url 'cms:about' %}">{{ "About"|translate_text }}</a></li>
+					<li><a href="{% url 'cms:classes' %}">{{ "Classes"|translate_text }}</a></li>
 					<li class="mobail-dropdown">
-						<a href="#">Pages<i class="fa-solid fa-chevron-down"></i></a>
+						<a href="#">{{ "Pages"|translate_text }}<i class="fa-solid fa-chevron-down"></i></a>
 						<ul class="mobail-submenu">
-							<li><a href="{% url 'cms:class_schedule' %}">Class Schedule</a></li>
-							<li><a href="{% url 'cms:gallery' %}">Gallery</a></li>
-							<li><a href="{% url 'cms:pricing' %}">Our Pricing</a></li>
-							<li><a href="{% url 'cms:trainers' %}">Trainers</a></li>
-							<li><a href="{% url 'cms:blog_details' %}">Blog Details</a></li>
-							<li><a href="{% url 'cms:class_details' %}">Class Details</a></li>
+							<li><a href="{% url 'cms:class_schedule' %}">{{ "Class Schedule"|translate_text }}</a></li>
+							<li><a href="{% url 'cms:gallery' %}">{{ "Gallery"|translate_text }}</a></li>
+							<li><a href="{% url 'cms:pricing' %}">{{ "Our Pricing"|translate_text }}</a></li>
+							<li><a href="{% url 'cms:trainers' %}">{{ "Trainers"|translate_text }}</a></li>
+							<li><a href="{% url 'cms:blog_details' %}">{{ "Blog Details"|translate_text }}</a></li>
+							<li><a href="{% url 'cms:class_details' %}">{{ "Class Details"|translate_text }}</a></li>
 						</ul>
 					</li>
-					<li><a href="{% url 'cms:blog' %}">Blog</a></li>
-					<li><a href="{% url 'cms:contact' %}">Contact</a></li>
+					<li><a href="{% url 'cms:blog' %}">{{ "Blog"|translate_text }}</a></li>
+					<li><a href="{% url 'cms:contact' %}">{{ "Contact"|translate_text }}</a></li>
 				</ul>
 			</div>
 			<div class="info">
@@ -167,13 +168,13 @@
 
 	<div class="breadcrumb-area">
 		<div class="container">
-			<h1 class="heading">Our Pricing</h1>
+			<h1 class="heading">{{ "Our Pricing"|translate_text }}</h1>
 			<div class="contact-box">
 				<ul>
-					<li><a href="{% url 'cms:home' %}">Home</a></li>
+					<li><a href="{% url 'cms:home' %}">{{ "Home"|translate_text }}</a></li>
 				</ul>
 				<span><i class="fa-solid fa-chevron-right"></i></span>
-				<span>Our Pricing</span>
+				<span>{{ "Our Pricing"|translate_text }}</span>
 			</div>
 		</div>
 	</div>
@@ -188,63 +189,63 @@
 				<div class="col-md-6 col-lg-6 col-xl-4">
 					<div class="package-box">
 						<div class="box-head">
-							<h5 class="price-title">Silver Package</h5>
+							<h5 class="price-title">{{ "Silver Package"|translate_text }}</h5>
 							<span class="price">$ 59.00</span>
-							<span class="validity">/Per Month</span>
+							<span class="validity">{{ "/Per Month"|translate_text }}</span>
 						</div>
 						<div class="box-body">
 							<ul>
-								<li><i class="fa-regular fa-circle-check"></i>30 Days Trial Features</li>
-								<li><i class="fa-regular fa-circle-check"></i>Unlimited Features</li>
-								<li><i class="fa-regular fa-circle-check"></i>Multi-Language Content</li>
-								<li><i class="fa-regular fa-circle-xmark"></i>Data backup and recovery</li>
-								<li><i class="fa-regular fa-circle-xmark"></i>Synced To Cloud Database</li>
+								<li><i class="fa-regular fa-circle-check"></i>{{ "30 Days Trial Features"|translate_text }}</li>
+								<li><i class="fa-regular fa-circle-check"></i>{{ "Unlimited Features"|translate_text }}</li>
+								<li><i class="fa-regular fa-circle-check"></i>{{ "Multi-Language Content"|translate_text }}</li>
+								<li><i class="fa-regular fa-circle-xmark"></i>{{ "Data backup and recovery"|translate_text }}</li>
+								<li><i class="fa-regular fa-circle-xmark"></i>{{ "Synced To Cloud Database"|translate_text }}</li>
 							</ul>
 						</div>
 						<div class="button">
-							<a href="{% url 'cms:contact' %}" class="btn">Purchase Now<i class="fa-solid fa-arrow-right"></i></a>
+							<a href="{% url 'cms:contact' %}" class="btn">{{ "Purchase Now"|translate_text }}<i class="fa-solid fa-arrow-right"></i></a>
 						</div>
 					</div>
 				</div>
 				<div class="col-md-6 col-lg-6 col-xl-4">
 					<div class="package-box">
 						<div class="box-head">
-							<h5 class="price-title">Silver Package</h5>
+							<h5 class="price-title">{{ "Silver Package"|translate_text }}</h5>
 							<span class="price">$ 59.00</span>
-							<span class="validity">/Per Month</span>
+							<span class="validity">{{ "/Per Month"|translate_text }}</span>
 						</div>
 						<div class="box-body">
 							<ul>
-								<li><i class="fa-regular fa-circle-check"></i>30 Days Trial Features</li>
-								<li><i class="fa-regular fa-circle-check"></i>Unlimited Features</li>
-								<li><i class="fa-regular fa-circle-check"></i>Multi-Language Content</li>
-								<li><i class="fa-regular fa-circle-check"></i>Data backup and recovery</li>
-								<li><i class="fa-regular fa-circle-xmark"></i>Synced To Cloud Database</li>
+								<li><i class="fa-regular fa-circle-check"></i>{{ "30 Days Trial Features"|translate_text }}</li>
+								<li><i class="fa-regular fa-circle-check"></i>{{ "Unlimited Features"|translate_text }}</li>
+								<li><i class="fa-regular fa-circle-check"></i>{{ "Multi-Language Content"|translate_text }}</li>
+								<li><i class="fa-regular fa-circle-check"></i>{{ "Data backup and recovery"|translate_text }}</li>
+								<li><i class="fa-regular fa-circle-xmark"></i>{{ "Synced To Cloud Database"|translate_text }}</li>
 							</ul>
 						</div>
 						<div class="button">
-							<a href="{% url 'cms:contact' %}" class="btn active">Purchase Now<i class="fa-solid fa-arrow-right"></i></a>
+							<a href="{% url 'cms:contact' %}" class="btn active">{{ "Purchase Now"|translate_text }}<i class="fa-solid fa-arrow-right"></i></a>
 						</div>
 					</div>
 				</div>
 				<div class="col-md-6 col-lg-6 col-xl-4">
 					<div class="package-box">
 						<div class="box-head">
-							<h5 class="price-title">Silver Package</h5>
+							<h5 class="price-title">{{ "Silver Package"|translate_text }}</h5>
 							<span class="price">$ 59.00</span>
-							<span class="validity">/Per Month</span>
+							<span class="validity">{{ "/Per Month"|translate_text }}</span>
 						</div>
 						<div class="box-body">
 							<ul>
-								<li><i class="fa-regular fa-circle-check"></i>30 Days Trial Features</li>
-								<li><i class="fa-regular fa-circle-check"></i>Unlimited Features</li>
-								<li><i class="fa-regular fa-circle-check"></i>Multi-Language Content</li>
-								<li><i class="fa-regular fa-circle-check"></i>Data backup and recovery</li>
-								<li><i class="fa-regular fa-circle-check"></i>Synced To Cloud Database</li>
+								<li><i class="fa-regular fa-circle-check"></i>{{ "30 Days Trial Features"|translate_text }}</li>
+								<li><i class="fa-regular fa-circle-check"></i>{{ "Unlimited Features"|translate_text }}</li>
+								<li><i class="fa-regular fa-circle-check"></i>{{ "Multi-Language Content"|translate_text }}</li>
+								<li><i class="fa-regular fa-circle-check"></i>{{ "Data backup and recovery"|translate_text }}</li>
+								<li><i class="fa-regular fa-circle-check"></i>{{ "Synced To Cloud Database"|translate_text }}</li>
 							</ul>
 						</div>
 						<div class="button">
-							<a href="{% url 'cms:contact' %}" class="btn">Purchase Now<i class="fa-solid fa-arrow-right"></i></a>
+							<a href="{% url 'cms:contact' %}" class="btn">{{ "Purchase Now"|translate_text }}<i class="fa-solid fa-arrow-right"></i></a>
 						</div>
 					</div>
 				</div>
@@ -259,35 +260,35 @@
 	<section class="marquee-section">
 		<div class="marquee-box">
 			<div class="marquee-item">
-				<span class="text">Yoga Flow</span>  
+				<span class="text">{{ "Yoga Flow"|translate_text }}</span>  
 				<span class="dots"></span>
-				<span class="text">Spin & Sweat</span>
+				<span class="text">{{ "Spin & Sweat"|translate_text }}</span>
 				<span class="dots"></span>
-				<span class="text">Pilates Core</span>
+				<span class="text">{{ "Pilates Core"|translate_text }}</span>
 				<span class="dots"></span>
-				<span class="text">CrossFit</span>
+				<span class="text">{{ "CrossFit"|translate_text }}</span>
 				<span class="dots"></span>
-				<span class="text">Core Crusher</span>
+				<span class="text">{{ "Core Crusher"|translate_text }}</span>
 				<span class="dots"></span>
-				<span class="text">Pilates Reformer</span>
+				<span class="text">{{ "Pilates Reformer"|translate_text }}</span>
 				<span class="dots"></span>
-				<span class="text">Zumba Energy</span>
+				<span class="text">{{ "Zumba Energy"|translate_text }}</span>
 				<span class="dots"></span>
 			</div>
 			<div class="marquee-item">
-				<span class="text">Yoga Flow</span>  
+				<span class="text">{{ "Yoga Flow"|translate_text }}</span>  
 				<span class="dots"></span>
-				<span class="text">Spin & Sweat</span>
+				<span class="text">{{ "Spin & Sweat"|translate_text }}</span>
 				<span class="dots"></span>
-				<span class="text">Pilates Core</span>
+				<span class="text">{{ "Pilates Core"|translate_text }}</span>
 				<span class="dots"></span>
-				<span class="text">CrossFit</span>
+				<span class="text">{{ "CrossFit"|translate_text }}</span>
 				<span class="dots"></span>
-				<span class="text">Core Crusher</span>
+				<span class="text">{{ "Core Crusher"|translate_text }}</span>
 				<span class="dots"></span>
-				<span class="text">Pilates Reformer</span>
+				<span class="text">{{ "Pilates Reformer"|translate_text }}</span>
 				<span class="dots"></span>
-				<span class="text">Zumba Energy</span>
+				<span class="text">{{ "Zumba Energy"|translate_text }}</span>
 				<span class="dots"></span>
 			</div>
 		</div>
@@ -300,8 +301,8 @@
 	<section class="work-process">
 		<div class="container">
 			<div class="section-title">
-				<h4 class="subtitle"><span>WORK PROCESS</span></h4>
-				<h1 class="title">Fitness Made Simple</h1>
+				<h4 class="subtitle"><span>{{ "WORK PROCESS"|translate_text }}</span></h4>
+				<h1 class="title">{{ "Fitness Made Simple"|translate_text }}</h1>
 			</div>
 			<div class="row">
 				<div class="col-md-6 col-xl-3">
@@ -316,8 +317,8 @@
 								</div>
 							</div>
 							<div class="content">
-								<h3 class="title">Workout Planning</h3>
-								<p class="description">Elevate your fitness level by combining strength</p>
+								<h3 class="title">{{ "Workout Planning"|translate_text }}</h3>
+								<p class="description">{{ "Elevate your fitness level by combining strength"|translate_text }}</p>
 							</div>
 						</div>
 						<div class="number">01</div>
@@ -335,8 +336,8 @@
 								</div>
 							</div>
 							<div class="content">
-								<h3 class="title">Gym Movement</h3>
-								<p class="description">Elevate your fitness level by combining strength</p>
+								<h3 class="title">{{ "Gym Movement"|translate_text }}</h3>
+								<p class="description">{{ "Elevate your fitness level by combining strength"|translate_text }}</p>
 							</div>
 						</div>
 						<div class="number">02</div>
@@ -354,8 +355,8 @@
 								</div>
 							</div>
 							<div class="content">
-								<h3 class="title">Fitness Practice</h3>
-								<p class="description">Elevate your fitness level by combining strength</p>
+								<h3 class="title">{{ "Fitness Practice"|translate_text }}</h3>
+								<p class="description">{{ "Elevate your fitness level by combining strength"|translate_text }}</p>
 							</div>
 						</div>
 						<div class="number">03</div>
@@ -373,8 +374,8 @@
 								</div>
 							</div>
 							<div class="content">
-								<h3 class="title">Achievement</h3>
-								<p class="description">Elevate your fitness level by combining strength</p>
+								<h3 class="title">{{ "Achievement"|translate_text }}</h3>
+								<p class="description">{{ "Elevate your fitness level by combining strength"|translate_text }}</p>
 							</div>
 						</div>
 						<div class="number">04</div>
@@ -394,9 +395,9 @@
 			<div class="footer-content">
 				<div class="discription">
 					<img src="{% static 'cms/assets/images/site-logo.png' %}" alt="images">
-					<p>Achieve your health goals with expert trainers, state-of-the-art equipment, and a supportive community</p>
+					<p>{{ "Achieve your health goals with expert trainers, state-of-the-art equipment, and a supportive community"|translate_text }}</p>
 					<ul>
-						<li class="title">Follow Us:</li>
+						<li class="title">{{ "Follow Us:"|translate_text }}</li>
 						<li><a href="#"><i class="fa-brands fa-facebook-f"></i></a></li>
 						<li><a href="#"><i class="fa-brands fa-x-twitter"></i></a></li>
 						<li><a href="#"><i class="fa-brands fa-youtube"></i></a></li>
@@ -404,25 +405,25 @@
 					</ul>
 				</div>
 				<div class="contact">
-					<h3>Contact</h3>
+					<h3>{{ "Contact"|translate_text }}</h3>
 					<ul>
-						<li><a href="mailto:fitcoredemo@example.com"><i class="fa-solid fa-envelope"></i>fitcoredemo@example.com</a></li>
-						<li><a href="tel:56712345678901"><i class="fa-solid fa-phone"></i>+ (567) 1234-567-8901</a></li>
-						<li><i class="fa-solid fa-location-dot"></i>293 Harrison St, San Francisco, CA 94103, United States</li>
+						<li><a href="mailto:fitcoredemo@example.com"><i class="fa-solid fa-envelope"></i>{{ "fitcoredemo@example.com"|translate_text }}</a></li>
+						<li><a href="tel:56712345678901"><i class="fa-solid fa-phone"></i>{{ "+ (567) 1234-567-8901"|translate_text }}</a></li>
+						<li><i class="fa-solid fa-location-dot"></i>{{ "293 Harrison St, San Francisco, CA 94103, United States"|translate_text }}</li>
 					</ul>
 				</div>
 				<div class="letter">
-					<h3>Newsletter</h3>
-					<p>Subscribe today and unlock 20% off your first class package.</p>
+					<h3>{{ "Newsletter"|translate_text }}</h3>
+					<p>{{ "Subscribe today and unlock 20% off your first class package."|translate_text }}</p>
 					<form action="#" method="post">
 						<div class="mail">
-							<input type="email" placeholder="Enter your Email">
+							<input type="email" placeholder="{{ "Enter your Email"|translate_text }}">
 							<button type="submit"><i class="fa-solid fa-paper-plane"></i></button>
 						</div>
 					</form>
 				</div>
 			</div>
-			<p class="end-text">All Right Reserved FitCore 2025</p>
+			<p class="end-text">{{ "All Right Reserved FitCore 2025"|translate_text }}</p>
 		</div>
 	</footer>
 
@@ -434,7 +435,7 @@
 		<button class="search-close"><i class="fa-solid fa-xmark"></i></button>
 		<form method="post" action="#">
 			<div class="form-group">
-				<input type="search" name="search-field" value="" placeholder="Search Here" required="">
+				<input type="search" name="search-field" value="" placeholder="{{ "Search Here"|translate_text }}" required="">
 				<button type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
 			</div>
 		</form>

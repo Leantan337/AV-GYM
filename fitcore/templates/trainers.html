@@ -1,10 +1,11 @@
 {% load static %}
+{% load translation_tags %}
 <!DOCTYPE html>
-<html lang="en">
+<html lang="{% if request.GET.lang %}{{ request.GET.lang }}{% else %}en{% endif %}">
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>FitCore</title>
+	<title>{{ "FitCore"|translate_text:request.GET.lang }}</title>
 
 	<link rel="icon" type="image/x-icon" href="{% static 'cms/assets/images/favicon.png' %}">
 
@@ -45,15 +46,15 @@
 			<div class="container">
 				<div class="top-left">
 					<div class="mail">
-						<a href="mailto:info@example.com"><i class="fa-solid fa-envelope"></i>info@example.com</a>
+						<a href="mailto:info@example.com"><i class="fa-solid fa-envelope"></i>{{ "info@example.com"|translate_text:request.GET.lang }}</a>
 					</div>
 					<div class="location">
-						<i class="fa-solid fa-location-dot"></i>6391 Elgin St. Celina, 10299
+						<i class="fa-solid fa-location-dot"></i>{{ "6391 Elgin St. Celina, 10299"|translate_text:request.GET.lang }}
 					</div>
 				</div>
 				<div class="top-right">
 					<div class="phone">
-						<a href="tel:6295550129"><i class="fa-solid fa-phone"></i>(629) 555-0129</a>
+						<a href="tel:6295550129"><i class="fa-solid fa-phone"></i>{{ "(629) 555-0129"|translate_text:request.GET.lang }}</a>
 					</div>
 					<div class="separator"></div>
 					<div class="social">
@@ -74,26 +75,26 @@
 				</div>
 				<div class="main-menu">
 					<ul>
-						<li><a href="{% url 'cms:home' %}">Home</a></li>
-						<li><a href="{% url 'cms:about' %}">About</a></li>
-						<li><a href="{% url 'cms:classes' %}">Classes</a></li>
+						<li><a href="{% url 'cms:home' %}">{{ "Home"|translate_text:request.GET.lang }}</a></li>
+						<li><a href="{% url 'cms:about' %}">{{ "About"|translate_text:request.GET.lang }}</a></li>
+						<li><a href="{% url 'cms:classes' %}">{{ "Classes"|translate_text:request.GET.lang }}</a></li>
 						<li class="dropdown">
-							<a href="#">Pages<i class="fa-solid fa-chevron-down"></i></a>
+							<a href="#">{{ "Pages"|translate_text:request.GET.lang }}<i class="fa-solid fa-chevron-down"></i></a>
 							<ul class="sub-menu">
-								<li><a href="{% url 'cms:class_schedule' %}">Class Schedule</a></li>
-								<li><a href="{% url 'cms:gallery' %}">Gallery</a></li>
-								<li><a href="{% url 'cms:pricing' %}">Our Pricing</a></li>
-								<li><a href="{% url 'cms:trainers' %}">Trainers</a></li>
-								<li><a href="{% url 'cms:blog_details' %}">Blog Details</a></li>
-								<li><a href="{% url 'cms:class_details' %}">Class Details</a></li>
+								<li><a href="{% url 'cms:class_schedule' %}">{{ "Class Schedule"|translate_text:request.GET.lang }}</a></li>
+								<li><a href="{% url 'cms:gallery' %}">{{ "Gallery"|translate_text:request.GET.lang }}</a></li>
+								<li><a href="{% url 'cms:pricing' %}">{{ "Our Pricing"|translate_text:request.GET.lang }}</a></li>
+								<li><a href="{% url 'cms:trainers' %}">{{ "Trainers"|translate_text:request.GET.lang }}</a></li>
+								<li><a href="{% url 'cms:blog_details' %}">{{ "Blog Details"|translate_text:request.GET.lang }}</a></li>
+								<li><a href="{% url 'cms:class_details' %}">{{ "Class Details"|translate_text:request.GET.lang }}</a></li>
 							</ul>
 						</li>
-						<li><a href="{% url 'cms:blog' %}">Blog</a></li>
-						<li><a href="{% url 'cms:contact' %}">Contact</a></li>
+						<li><a href="{% url 'cms:blog' %}">{{ "Blog"|translate_text:request.GET.lang }}</a></li>
+						<li><a href="{% url 'cms:contact' %}">{{ "Contact"|translate_text:request.GET.lang }}</a></li>
 					</ul>
 				</div>
 				<div class="button">
-					<a href="{% url 'cms:contact' %}" class="btn">Join Now<i class="fa-solid fa-angles-right"></i></a>
+					<a href="{% url 'cms:contact' %}" class="btn">{{ "Join Now"|translate_text:request.GET.lang }}<i class="fa-solid fa-angles-right"></i></a>
 				</div>
 			</div>
 		</div>	
@@ -117,37 +118,37 @@
 		<div class="menu-content">
 			<div class="menu">
 				<ul>
-					<li><a href="{% url 'cms:home' %}">Home</a></li>
-					<li><a href="{% url 'cms:about' %}">About</a></li>
-					<li><a href="{% url 'cms:classes' %}">Classes</a></li>
+					<li><a href="{% url 'cms:home' %}">{{ "Home"|translate_text:request.GET.lang }}</a></li>
+					<li><a href="{% url 'cms:about' %}">{{ "About"|translate_text:request.GET.lang }}</a></li>
+					<li><a href="{% url 'cms:classes' %}">{{ "Classes"|translate_text:request.GET.lang }}</a></li>
 					<li class="mobail-dropdown">
-						<a href="#">Pages<i class="fa-solid fa-chevron-down"></i></a>
+						<a href="#">{{ "Pages"|translate_text:request.GET.lang }}<i class="fa-solid fa-chevron-down"></i></a>
 						<ul class="mobail-submenu">
-							<li><a href="{% url 'cms:class_schedule' %}">Class Schedule</a></li>
-							<li><a href="{% url 'cms:gallery' %}">Gallery</a></li>
-							<li><a href="{% url 'cms:pricing' %}">Our Pricing</a></li>
-							<li><a href="{% url 'cms:trainers' %}">Trainers</a></li>
-							<li><a href="{% url 'cms:blog_details' %}">Blog Details</a></li>
-							<li><a href="{% url 'cms:class_details' %}">Class Details</a></li>
+							<li><a href="{% url 'cms:class_schedule' %}">{{ "Class Schedule"|translate_text:request.GET.lang }}</a></li>
+							<li><a href="{% url 'cms:gallery' %}">{{ "Gallery"|translate_text:request.GET.lang }}</a></li>
+							<li><a href="{% url 'cms:pricing' %}">{{ "Our Pricing"|translate_text:request.GET.lang }}</a></li>
+							<li><a href="{% url 'cms:trainers' %}">{{ "Trainers"|translate_text:request.GET.lang }}</a></li>
+							<li><a href="{% url 'cms:blog_details' %}">{{ "Blog Details"|translate_text:request.GET.lang }}</a></li>
+							<li><a href="{% url 'cms:class_details' %}">{{ "Class Details"|translate_text:request.GET.lang }}</a></li>
 						</ul>
 					</li>
-					<li><a href="{% url 'cms:blog' %}">Blog</a></li>
-					<li><a href="{% url 'cms:contact' %}">Contact</a></li>
+					<li><a href="{% url 'cms:blog' %}">{{ "Blog"|translate_text:request.GET.lang }}</a></li>
+					<li><a href="{% url 'cms:contact' %}">{{ "Contact"|translate_text:request.GET.lang }}</a></li>
 				</ul>
 			</div>
 			<div class="info">
-				<h3 class="title">Contact Info</h3>
+				<h3 class="title">{{ "Contact Info"|translate_text:request.GET.lang }}</h3>
 				<div class="info-box">
 					<i class="fa-solid fa-location-dot"></i>
-					6391 Elgin St. Celina, Delaware 10299
+					{{ "6391 Elgin St. Celina, Delaware 10299"|translate_text:request.GET.lang }}
 				</div>
 				<div class="info-box">
 					<i class="fa-solid fa-phone"></i>
-					<a href="#">(209) 555-0104</a>
+					<a href="#">{{ "(209) 555-0104"|translate_text:request.GET.lang }}</a>
 				</div>
 				<div class="info-box">
 					<i class="fa-solid fa-envelope"></i>
-					<a href="#">info@example.com</a>
+					<a href="#">{{ "info@example.com"|translate_text:request.GET.lang }}</a>
 				</div>
 			</div>
 			<div class="component">
@@ -155,7 +156,7 @@
 					<i class="fa-solid fa-magnifying-glass"></i>
 				</div>
 				<div class="button">
-					<a href="{% url 'cms:contact' %}" class="btn">Get A Quote<i class="fa-solid fa-arrow-right"></i></a>
+					<a href="{% url 'cms:contact' %}" class="btn">{{ "Get A Quote"|translate_text:request.GET.lang }}<i class="fa-solid fa-arrow-right"></i></a>
 				</div>
 			</div>
 		</div>
@@ -167,13 +168,13 @@
 
 	<div class="breadcrumb-area">
 		<div class="container">
-			<h1 class="heading">Our Trainers</h1>
+			<h1 class="heading">{{ "Our Trainers"|translate_text:request.GET.lang }}</h1>
 			<div class="contact-box">
 				<ul>
-					<li><a href="{% url 'cms:home' %}">Home</a></li>
+					<li><a href="{% url 'cms:home' %}">{{ "Home"|translate_text:request.GET.lang }}</a></li>
 				</ul>
 				<span><i class="fa-solid fa-chevron-right"></i></span>
-				<span>Our Trainers</span>
+				<span>{{ "Our Trainers"|translate_text:request.GET.lang }}</span>
 			</div>
 		</div>
 	</div>
@@ -191,8 +192,8 @@
 							<img src="{% static 'cms/assets/images/member-1.png' %}" alt="images">
 						</div>
 						<div class="bio">
-							<h4 class="name">Harvey jones</h4>
-							<p>Body Building</p>
+							<h4 class="name">{{ "Harvey jones"|translate_text:request.GET.lang }}</h4>
+							<p>{{ "Body Building"|translate_text:request.GET.lang }}</p>
 							<ul class="social-icons">
 								<li><a href="#"><i class="fa-brands fa-facebook-f"></i></a></li>
 								<li><a href="#"><i class="fa-brands fa-x-twitter"></i></a></li>
@@ -206,8 +207,8 @@
 							<img src="{% static 'cms/assets/images/member-2.png' %}" alt="images">
 						</div>
 						<div class="bio">
-							<h4 class="name">David Harris</h4>
-							<p>Strength Trainer</p>
+							<h4 class="name">{{ "David Harris"|translate_text:request.GET.lang }}</h4>
+							<p>{{ "Strength Trainer"|translate_text:request.GET.lang }}</p>
 							<ul class="social-icons">
 								<li><a href="#"><i class="fa-brands fa-facebook-f"></i></a></li>
 								<li><a href="#"><i class="fa-brands fa-x-twitter"></i></a></li>
@@ -221,8 +222,8 @@
 							<img src="{% static 'cms/assets/images/member-3.png' %}" alt="images">
 						</div>
 						<div class="bio">
-							<h4 class="name">Harlien puth</h4>
-							<p>Strength Trainer</p>
+							<h4 class="name">{{ "Harlien puth"|translate_text:request.GET.lang }}</h4>
+							<p>{{ "Strength Trainer"|translate_text:request.GET.lang }}</p>
 							<ul class="social-icons">
 								<li><a href="#"><i class="fa-brands fa-facebook-f"></i></a></li>
 								<li><a href="#"><i class="fa-brands fa-x-twitter"></i></a></li>
@@ -236,8 +237,8 @@
 							<img src="{% static 'cms/assets/images/member-4.png' %}" alt="images">
 						</div>
 						<div class="bio">
-							<h4 class="name">Tristin Chinez</h4>
-							<p>Yoga Coach</p>
+							<h4 class="name">{{ "Tristin Chinez"|translate_text:request.GET.lang }}</h4>
+							<p>{{ "Yoga Coach"|translate_text:request.GET.lang }}</p>
 							<ul class="social-icons">
 								<li><a href="#"><i class="fa-brands fa-facebook-f"></i></a></li>
 								<li><a href="#"><i class="fa-brands fa-x-twitter"></i></a></li>
@@ -255,8 +256,8 @@
 							<img src="{% static 'cms/assets/images/member-5.png' %}" alt="images">
 						</div>
 						<div class="bio">
-							<h4 class="name">Abidaih jannah</h4>
-							<p>Yoga Coach</p>
+							<h4 class="name">{{ "Abidaih jannah"|translate_text:request.GET.lang }}</h4>
+							<p>{{ "Yoga Coach"|translate_text:request.GET.lang }}</p>
 							<ul class="social-icons">
 								<li><a href="#"><i class="fa-brands fa-facebook-f"></i></a></li>
 								<li><a href="#"><i class="fa-brands fa-x-twitter"></i></a></li>
@@ -270,8 +271,8 @@
 							<img src="{% static 'cms/assets/images/member-6.png' %}" alt="images">
 						</div>
 						<div class="bio">
-							<h4 class="name">Hamuel Dthan</h4>
-							<p>Body Building Expert</p>
+							<h4 class="name">{{ "Hamuel Dthan"|translate_text:request.GET.lang }}</h4>
+							<p>{{ "Body Building Expert"|translate_text:request.GET.lang }}</p>
 							<ul class="social-icons">
 								<li><a href="#"><i class="fa-brands fa-facebook-f"></i></a></li>
 								<li><a href="#"><i class="fa-brands fa-x-twitter"></i></a></li>
@@ -285,8 +286,8 @@
 							<img src="{% static 'cms/assets/images/member-7.png' %}" alt="images">
 						</div>
 						<div class="bio">
-							<h4 class="name">Saleanor Frace</h4>
-							<p>Fitness Trainer</p>
+							<h4 class="name">{{ "Saleanor Frace"|translate_text:request.GET.lang }}</h4>
+							<p>{{ "Fitness Trainer"|translate_text:request.GET.lang }}</p>
 							<ul class="social-icons">
 								<li><a href="#"><i class="fa-brands fa-facebook-f"></i></a></li>
 								<li><a href="#"><i class="fa-brands fa-x-twitter"></i></a></li>
@@ -300,8 +301,8 @@
 							<img src="{% static 'cms/assets/images/member-8.png' %}" alt="images">
 						</div>
 						<div class="bio">
-							<h4 class="name">Relvino Alson</h4>
-							<p>Gym Trainer</p>
+							<h4 class="name">{{ "Relvino Alson"|translate_text:request.GET.lang }}</h4>
+							<p>{{ "Gym Trainer"|translate_text:request.GET.lang }}</p>
 							<ul class="social-icons">
 								<li><a href="#"><i class="fa-brands fa-facebook-f"></i></a></li>
 								<li><a href="#"><i class="fa-brands fa-x-twitter"></i></a></li>
@@ -324,9 +325,9 @@
 			<div class="footer-content">
 				<div class="discription">
 					<img src="{% static 'cms/assets/images/site-logo.png' %}" alt="images">
-					<p>Achieve your health goals with expert trainers, state-of-the-art equipment, and a supportive community</p>
+					<p>{{ "Achieve your health goals with expert trainers, state-of-the-art equipment, and a supportive community"|translate_text:request.GET.lang }}</p>
 					<ul>
-						<li class="title">Follow Us:</li>
+						<li class="title">{{ "Follow Us:"|translate_text:request.GET.lang }}</li>
 						<li><a href="#"><i class="fa-brands fa-facebook-f"></i></a></li>
 						<li><a href="#"><i class="fa-brands fa-x-twitter"></i></a></li>
 						<li><a href="#"><i class="fa-brands fa-youtube"></i></a></li>
@@ -334,25 +335,25 @@
 					</ul>
 				</div>
 				<div class="contact">
-					<h3>Contact</h3>
+					<h3>{{ "Contact"|translate_text:request.GET.lang }}</h3>
 					<ul>
-						<li><a href="mailto:fitcoredemo@example.com"><i class="fa-solid fa-envelope"></i>fitcoredemo@example.com</a></li>
-						<li><a href="tel:56712345678901"><i class="fa-solid fa-phone"></i>+ (567) 1234-567-8901</a></li>
-						<li><i class="fa-solid fa-location-dot"></i>293 Harrison St, San Francisco, CA 94103, United States</li>
+						<li><a href="mailto:fitcoredemo@example.com"><i class="fa-solid fa-envelope"></i>{{ "fitcoredemo@example.com"|translate_text:request.GET.lang }}</a></li>
+						<li><a href="tel:56712345678901"><i class="fa-solid fa-phone"></i>{{ "+ (567) 1234-567-8901"|translate_text:request.GET.lang }}</a></li>
+						<li><i class="fa-solid fa-location-dot"></i>{{ "293 Harrison St, San Francisco, CA 94103, United States"|translate_text:request.GET.lang }}</li>
 					</ul>
 				</div>
 				<div class="letter">
-					<h3>Newsletter</h3>
-					<p>Subscribe today and unlock 20% off your first class package.</p>
+					<h3>{{ "Newsletter"|translate_text:request.GET.lang }}</h3>
+					<p>{{ "Subscribe today and unlock 20% off your first class package."|translate_text:request.GET.lang }}</p>
 					<form action="#" method="post">
 						<div class="mail">
-							<input type="email" placeholder="Enter your Email">
+							<input type="email" placeholder="{{ 'Enter your Email'|translate_text:request.GET.lang }}">
 							<button type="submit"><i class="fa-solid fa-paper-plane"></i></button>
 						</div>
 					</form>
 				</div>
 			</div>
-			<p class="end-text">All Right Reserved FitCore 2025</p>
+			<p class="end-text">{{ "All Right Reserved FitCore 2025"|translate_text:request.GET.lang }}</p>
 		</div>
 	</footer>
 
@@ -364,7 +365,7 @@
 		<button class="search-close"><i class="fa-solid fa-xmark"></i></button>
 		<form method="post" action="#">
 			<div class="form-group">
-				<input type="search" name="search-field" value="" placeholder="Search Here" required="">
+				<input type="search" name="search-field" value="" placeholder="{{ 'Search Here'|translate_text:request.GET.lang }}" required="">
 				<button type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
 			</div>
 		</form>
