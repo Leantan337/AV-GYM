@@ -1,7 +1,6 @@
 from django.shortcuts import render, get_object_or_404
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from wagtail.models import Page
-from wagtail.search.models import Query
 from .models import BlogPage, BlogCategory
 
 # Create your views here.
@@ -11,7 +10,6 @@ def search(request):
     
     if search_query:
         search_results = BlogPage.objects.live().search(search_query)
-        Query.get(search_query).add_hit()
     else:
         search_results = BlogPage.objects.none()
     
